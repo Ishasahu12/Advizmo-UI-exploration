@@ -111,10 +111,6 @@ const RecentActivity: React.FC = () => {
     }
   };
 
-  const getTypeLabel = (type: ActivityType) => {
-    return type.charAt(0).toUpperCase() + type.slice(1);
-  };
-
   return (
     <div className="recent-activity">
       <div className="section-header">

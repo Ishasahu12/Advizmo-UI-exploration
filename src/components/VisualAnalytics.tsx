@@ -34,7 +34,6 @@ const VisualAnalytics: React.FC = () => {
   ];
 
   const maxCashFlow = Math.max(...cashFlowData.map((d) => d.value));
-  const maxSpending = Math.max(...monthlySpending.map((d) => d.amount));
 
   return (
     <div className="visual-analytics">
@@ -47,7 +46,7 @@ const VisualAnalytics: React.FC = () => {
           </div>
           <div className="chart-body">
             <div className="bar-chart">
-              {cashFlowData.map((data, index) => (
+              {cashFlowData.map((data) => (
                 <div key={data.month} className="bar-group">
                   <div
                     className="bar"
@@ -105,7 +104,7 @@ const VisualAnalytics: React.FC = () => {
             <div className="donut-container">
               <svg viewBox="0 0 100 100" className="donut-chart">
                 {assetAllocation.reduce(
-                  (acc, item, index) => {
+                  (acc, item) => {
                     const offset = acc.offset;
                     const strokeDash = (item.value / 100) * 251.2;
                     const remaining = 251.2 - strokeDash;
