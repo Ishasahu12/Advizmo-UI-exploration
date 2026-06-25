@@ -12,13 +12,11 @@ import AIRecommendations from './components/AIRecommendations';
 
 function App() {
   return (
-    <div className="app-container">
+    <div className="app-layout">
       <Navigation />
-      
-      <div className="main-wrapper">
+      <main className="main-content">
         <GlobalHeader />
-        
-        <main className="main-content">
+        <div className="dashboard-container">
           <ActionCenter />
           <FinancialSnapshot />
           <FinancialHealth />
@@ -27,8 +25,8 @@ function App() {
           <RecentActivity />
           <UpcomingItems />
           <AIRecommendations />
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }

@@ -2,58 +2,66 @@
   margin-bottom: var(--space-8);
 }
 
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.insights-count {
+  font-size: 11px;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  background: var(--brand-purple);
+  color: white;
+  border-radius: var(--radius-sm);
+}
+
 .insights-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
 }
 
 .insight-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  transition: all 0.2s ease;
-}
-
-.insight-card:hover {
-  box-shadow: var(--shadow-sm);
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-left: 3px solid transparent;
+  transition: all var(--transition-fast);
 }
 
 .insight-card.positive {
-  border-left: 3px solid var(--accent-green);
+  border-left-color: var(--accent-green);
 }
 
 .insight-card.negative {
-  border-left: 3px solid var(--accent-red);
+  border-left-color: var(--accent-red);
+}
+
+.insight-card.neutral {
+  border-left-color: var(--accent-blue);
 }
 
 .insight-card.action {
-  border-left: 3px solid var(--brand-purple);
-}
-
-.insight-card.info {
-  border-left: 3px solid var(--accent-blue);
+  border-left-color: var(--accent-yellow);
 }
 
 .insight-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: flex-start;
 }
 
 .insight-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
 }
 
 .insight-icon.positive {
@@ -66,14 +74,14 @@
   color: var(--accent-red);
 }
 
-.insight-icon.action {
-  background: rgba(84, 56, 169, 0.1);
-  color: var(--brand-purple);
-}
-
-.insight-icon.info {
+.insight-icon.neutral {
   background: var(--accent-blue-bg);
   color: var(--accent-blue);
+}
+
+.insight-icon.action {
+  background: var(--accent-yellow-bg);
+  color: var(--accent-yellow);
 }
 
 .insight-metric {
@@ -93,46 +101,30 @@
   font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
-  margin: 0;
   line-height: 1.3;
 }
 
 .insight-description {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
   flex: 1;
 }
 
 .insight-action {
-  align-self: flex-start;
-  padding: 6px 12px;
-  background: var(--bg-tertiary);
-  border: none;
-  border-radius: var(--radius-sm);
   font-family: var(--font-family);
   font-size: 12px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--brand-cyan);
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: color var(--transition-fast);
   margin-top: auto;
 }
 
 .insight-action:hover {
-  background: var(--brand-purple);
-  color: white;
-}
-
-@media (max-width: 1200px) {
-  .insights-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .insights-grid {
-    grid-template-columns: 1fr;
-  }
+  color: var(--accent-green);
 }

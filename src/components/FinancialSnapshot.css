@@ -2,67 +2,98 @@
   margin-bottom: var(--space-8);
 }
 
-.metrics-grid {
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+}
+
+.snapshot-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
+  gap: var(--space-4);
 }
 
-.metric-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 16px;
+.snapshot-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5);
+}
+
+.snapshot-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  transition: all 0.2s ease;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
 }
 
-.metric-card:hover {
-  border-color: var(--brand-purple);
-  box-shadow: var(--shadow-sm);
+.snapshot-content .metric-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.metric-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-}
-
-.metric-value {
-  font-size: 20px;
-  font-weight: 700;
+.snapshot-content .metric-value {
+  font-size: 22px;
+  font-weight: 600;
   color: var(--text-primary);
+  letter-spacing: -0.3px;
+  margin-top: var(--space-1);
 }
 
 .metric-change {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+}
+
+.metric-change svg {
+  flex-shrink: 0;
+}
+
+.change-value {
   font-size: 12px;
   font-weight: 500;
 }
 
-.metric-change.up {
-  color: var(--accent-green);
-}
-
-.metric-change.down {
-  color: var(--accent-red);
-}
-
-.metric-change.neutral {
+.change-period {
+  font-size: 11px;
   color: var(--text-tertiary);
+  margin-left: var(--space-1);
 }
 
-@media (max-width: 1200px) {
-  .metrics-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.snapshot-card .sparkline {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 32px;
+  width: 48px;
+  flex-shrink: 0;
 }
 
-@media (max-width: 768px) {
-  .metrics-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.snapshot-card .sparkline-bar {
+  width: 4px;
+  background: var(--brand-cyan);
+  border-radius: 2px;
+  opacity: 0.5;
+  transition: opacity var(--transition-fast);
+}
+
+.snapshot-card .sparkline-bar:last-child {
+  opacity: 1;
+}
+
+.snapshot-card:hover .sparkline-bar {
+  opacity: 0.7;
+}
+
+.snapshot-card:hover .sparkline-bar:last-child {
+  opacity: 1;
 }
