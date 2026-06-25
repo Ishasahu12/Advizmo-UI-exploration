@@ -76,11 +76,11 @@
 }
 
 .bar.income {
-  background: linear-gradient(180deg, var(--brand-cyan) 0%, rgba(24, 240, 184, 0.6) 100%);
+  background: linear-gradient(180deg, var(--brand-primary) 0%, var(--brand-primary-light) 100%);
 }
 
 .bar.expense {
-  background: linear-gradient(180deg, var(--brand-purple) 0%, rgba(84, 56, 169, 0.6) 100%);
+  background: linear-gradient(180deg, var(--chart-6) 0%, #D4A5FF 100%);
 }
 
 .bar-label {
@@ -112,11 +112,11 @@
 }
 
 .legend-dot.income {
-  background: var(--brand-cyan);
+  background: var(--brand-primary);
 }
 
 .legend-dot.expense {
-  background: var(--brand-purple);
+  background: var(--chart-6);
 }
 
 .allocation-chart {
@@ -156,15 +156,15 @@
 }
 
 .allocation-dot.cyan {
-  background: var(--brand-cyan);
+  background: var(--brand-primary);
 }
 
 .allocation-dot.purple {
-  background: var(--brand-purple);
+  background: var(--chart-6);
 }
 
 .allocation-dot.green {
-  background: var(--accent-green);
+  background: var(--chart-1);
 }
 
 .allocation-name {
@@ -205,11 +205,11 @@
   border-radius: 50%;
 }
 
-.spending-dot.housing { background: var(--brand-purple); }
-.spending-dot.food { background: var(--brand-cyan); }
-.spending-dot.transport { background: var(--accent-green); }
-.spending-dot.utilities { background: var(--accent-blue); }
-.spending-dot.subscriptions { background: var(--accent-yellow); }
+.spending-dot.housing { background: var(--chart-6); }
+.spending-dot.food { background: var(--brand-primary); }
+.spending-dot.transport { background: var(--chart-1); }
+.spending-dot.utilities { background: var(--brand-primary); }
+.spending-dot.subscriptions { background: var(--accent-warning); }
 
 .spending-name {
   font-size: 13px;

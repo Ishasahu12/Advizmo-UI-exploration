@@ -1,33 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-  --brand-purple: #5438A9;
-  --brand-cyan: #18F0B8;
-  --bg-primary: #1C1C1E;
-  --bg-secondary: #2C2C2E;
-  --bg-tertiary: #3A3A3C;
-  --bg-card: #2C2C2E;
-  --bg-card-hover: #3A3A3C;
+  --brand-primary: #227BE2;
+  --brand-primary-light: #BAE8FF;
 
-  --text-primary: #FFFFFF;
-  --text-secondary: #A1A1A6;
-  --text-tertiary: #636366;
+  --accent-urgent: #B72513;
+  --accent-positive: #22A86A;
+  --accent-negative: #D85040;
+  --accent-warning: #D4851A;
+  --accent-info: #4094D8;
 
-  --accent-green: #34C759;
-  --accent-green-bg: rgba(52, 199, 89, 0.15);
-  --accent-red: #FF453A;
-  --accent-red-bg: rgba(255, 69, 58, 0.15);
-  --accent-blue: #0A84FF;
-  --accent-blue-bg: rgba(10, 132, 255, 0.15);
-  --accent-yellow: #FFD60A;
-  --accent-yellow-bg: rgba(255, 214, 10, 0.15);
+  --surface: #F3F4F6;
 
-  --border-color: #3A3A3C;
-  --border-subtle: rgba(255, 255, 255, 0.08);
+  --emphasis-1: #C5E8D5;
+  --emphasis-2: #C6E3FA;
+  --emphasis-3: #FFCFC9;
+  --emphasis-4: #F5D9B4;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --chart-1: #1D9E75;
+  --chart-2: #5DCAA5;
+  --chart-3: #9FE0CB;
+  --chart-4: #E1F5EE;
+  --chart-5: #15803D;
+  --chart-6: #A855F7;
+
+  --text-primary: #1A1D23;
+  --text-secondary: #3A424E;
+  --text-tertiary: #8A94A6;
+  --text-disabled: #E8ECF0;
+
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F3F4F6;
+  --bg-tertiary: #E8ECF0;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F3F4F6;
+
+  --border-color: #E8ECF0;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
 
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -66,7 +79,7 @@ html {
 
 body {
   font-family: var(--font-family);
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   color: var(--text-primary);
   line-height: 1.5;
   min-height: 100vh;
@@ -154,11 +167,11 @@ body {
 }
 
 .trend-up {
-  color: var(--accent-green);
+  color: var(--accent-positive);
 }
 
 .trend-down {
-  color: var(--accent-red);
+  color: var(--accent-negative);
 }
 
 .trend-neutral {
@@ -177,23 +190,23 @@ body {
 }
 
 .badge-green {
-  background: var(--accent-green-bg);
-  color: var(--accent-green);
+  background: var(--emphasis-1);
+  color: var(--chart-1);
 }
 
 .badge-red {
-  background: var(--accent-red-bg);
-  color: var(--accent-red);
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
 }
 
 .badge-blue {
-  background: var(--accent-blue-bg);
-  color: var(--accent-blue);
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
 }
 
 .badge-yellow {
-  background: var(--accent-yellow-bg);
-  color: var(--accent-yellow);
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
 }
 
 .btn {
@@ -213,13 +226,13 @@ body {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--brand-cyan) 0%, #0ED4A6 100%);
-  color: var(--bg-primary);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #1A6DD4 100%);
+  color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(24, 240, 184, 0.3);
+  box-shadow: 0 4px 12px rgba(34, 123, 226, 0.3);
 }
 
 .btn-secondary {
@@ -258,19 +271,19 @@ body {
 }
 
 .progress-fill.green {
-  background: var(--accent-green);
+  background: var(--accent-positive);
 }
 
 .progress-fill.blue {
-  background: var(--accent-blue);
+  background: var(--brand-primary);
 }
 
 .progress-fill.yellow {
-  background: var(--accent-yellow);
+  background: var(--accent-warning);
 }
 
 .progress-fill.purple {
-  background: var(--brand-purple);
+  background: var(--chart-6);
 }
 
 .sparkline {
@@ -282,7 +295,7 @@ body {
 
 .sparkline-bar {
   width: 3px;
-  background: var(--brand-cyan);
+  background: var(--brand-primary);
   border-radius: 1px;
   opacity: 0.6;
 }

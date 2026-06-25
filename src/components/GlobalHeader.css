@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-4) var(--space-6);
-  background: var(--bg-primary);
+  background: var(--bg-card);
   border-bottom: 1px solid var(--border-subtle);
   position: sticky;
   top: 0;
@@ -45,8 +45,8 @@
 }
 
 .search-container:focus-within {
-  border-color: var(--brand-purple);
-  box-shadow: 0 0 0 3px rgba(84, 56, 169, 0.2);
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(34, 123, 226, 0.1);
 }
 
 .search-container svg {
@@ -111,8 +111,9 @@
 }
 
 .time-filter-btn.active {
-  background: var(--bg-tertiary);
+  background: var(--bg-card);
   color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .header-actions {
@@ -147,7 +148,7 @@
   right: 8px;
   width: 8px;
   height: 8px;
-  background: var(--accent-red);
+  background: var(--accent-urgent);
   border-radius: 50%;
   border: 2px solid var(--bg-secondary);
 }
@@ -163,7 +164,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand-purple) 0%, var(--brand-cyan) 100%);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--chart-6) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,7 +208,7 @@
 .mark-read-btn {
   font-family: var(--font-family);
   font-size: 12px;
-  color: var(--brand-cyan);
+  color: var(--brand-primary);
   background: none;
   border: none;
   cursor: pointer;
@@ -235,7 +236,7 @@
 }
 
 .notification-item.unread {
-  background: rgba(24, 240, 184, 0.03);
+  background: var(--emphasis-2);
 }
 
 .notification-icon {
@@ -249,18 +250,18 @@
 }
 
 .notification-icon.blue {
-  background: var(--accent-blue-bg);
-  color: var(--accent-blue);
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
 }
 
 .notification-icon.green {
-  background: var(--accent-green-bg);
-  color: var(--accent-green);
+  background: var(--emphasis-1);
+  color: var(--chart-1);
 }
 
 .notification-icon.yellow {
-  background: var(--accent-yellow-bg);
-  color: var(--accent-yellow);
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
 }
 
 .notification-content {

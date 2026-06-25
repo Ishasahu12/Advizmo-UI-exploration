@@ -80,7 +80,7 @@
 
 .snapshot-card .sparkline-bar {
   width: 4px;
-  background: var(--brand-cyan);
+  background: var(--brand-primary);
   border-radius: 2px;
   opacity: 0.5;
   transition: opacity var(--transition-fast);

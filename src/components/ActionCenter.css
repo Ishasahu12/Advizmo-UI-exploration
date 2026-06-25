@@ -25,7 +25,7 @@
   grid-row: span 2;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(84, 56, 169, 0.1) 100%);
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(34, 123, 226, 0.05) 100%);
 }
 
 .bento-main-header {
@@ -35,7 +35,7 @@
 .bento-tag {
   display: inline-block;
   padding: var(--space-1) var(--space-3);
-  background: linear-gradient(135deg, var(--brand-purple) 0%, rgba(84, 56, 169, 0.5) 100%);
+  background: linear-gradient(135deg, var(--brand-primary) 0%, rgba(34, 123, 226, 0.7) 100%);
   border-radius: var(--radius-sm);
   font-size: 11px;
   font-weight: 600;
@@ -79,9 +79,9 @@
   align-items: baseline;
   gap: var(--space-2);
   padding: var(--space-4);
-  background: rgba(24, 240, 184, 0.08);
+  background: var(--emphasis-1);
   border-radius: var(--radius-md);
-  border: 1px solid rgba(24, 240, 184, 0.2);
+  border: 1px solid var(--chart-2);
 }
 
 .earnings-label {
@@ -93,7 +93,7 @@
 .earnings-amount {
   font-size: 28px;
   font-weight: 600;
-  color: var(--accent-green);
+  color: var(--chart-1);
   letter-spacing: -0.5px;
 }
 
@@ -159,16 +159,16 @@
 
 .source-bar-fill {
   height: 100%;
-  background: var(--brand-cyan);
+  background: var(--brand-primary);
   border-radius: 2px;
 }
 
 .source-bar-fill.safe {
-  background: var(--accent-blue);
+  background: var(--brand-primary);
 }
 
 .source-bar-fill.reserved {
-  background: var(--accent-yellow);
+  background: var(--accent-warning);
 }
 
 .source-note {
@@ -190,7 +190,7 @@
 .total-amount {
   font-size: 18px;
   font-weight: 600;
-  color: var(--accent-green);
+  color: var(--chart-1);
 }
 
 .why-items {
@@ -216,23 +216,23 @@
 }
 
 .why-icon.green {
-  background: var(--accent-green-bg);
-  color: var(--accent-green);
+  background: var(--emphasis-1);
+  color: var(--chart-1);
 }
 
 .why-icon.yellow {
-  background: var(--accent-yellow-bg);
-  color: var(--accent-yellow);
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
 }
 
 .why-icon.red {
-  background: var(--accent-red-bg);
-  color: var(--accent-red);
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
 }
 
 .why-icon.purple {
-  background: rgba(84, 56, 169, 0.2);
-  color: var(--brand-purple);
+  background: #F3E8FF;
+  color: var(--chart-6);
 }
 
 .why-content {
@@ -257,7 +257,7 @@
 }
 
 .why-value.green {
-  color: var(--accent-green);
+  color: var(--chart-1);
 }
 
 .why-note {
@@ -292,18 +292,18 @@
 }
 
 .risk-badge.moderate {
-  background: var(--accent-yellow-bg);
-  color: var(--accent-yellow);
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
 }
 
 .risk-badge.low {
-  background: var(--accent-green-bg);
-  color: var(--accent-green);
+  background: var(--emphasis-1);
+  color: var(--chart-1);
 }
 
 .risk-badge.high {
-  background: var(--accent-red-bg);
-  color: var(--accent-red);
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
 }
 
 .risk-description {
@@ -327,7 +327,7 @@
 
 .confidence-value {
   font-weight: 600;
-  color: var(--accent-green);
+  color: var(--chart-1);
 }
 
 .destination, .expected-outcome {
@@ -351,5 +351,5 @@
 .outcome-value {
   font-size: 18px;
   font-weight: 600;
-  color: var(--accent-green);
+  color: var(--chart-1);
 }

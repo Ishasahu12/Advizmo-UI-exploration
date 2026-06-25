@@ -15,24 +15,24 @@ export default function VisualAnalytics() {
           <div className="chart-area">
             <svg viewBox="0 0 400 120" className="area-chart">
               <defs>
-                <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="var(--brand-cyan)" stopOpacity="0.3" />
-                  <stop offset="100%" stopColor="var(--brand-cyan)" stopOpacity="0" />
+                <linearGradient id="areaGradientLight" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="var(--brand-primary)" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="var(--brand-primary)" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path
                 d="M0 100 L67 80 L134 85 L201 60 L268 55 L335 40 L400 30 L400 120 L0 120 Z"
-                fill="url(#areaGradient)"
+                fill="url(#areaGradientLight)"
               />
               <path
                 d="M0 100 L67 80 L134 85 L201 60 L268 55 L335 40 L400 30"
                 fill="none"
-                stroke="var(--brand-cyan)"
+                stroke="var(--brand-primary)"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle cx="400" cy="30" r="4" fill="var(--brand-cyan)" />
+              <circle cx="400" cy="30" r="4" fill="var(--brand-primary)" />
             </svg>
             <div className="chart-labels">
               <span>Jan</span>
@@ -106,7 +106,7 @@ export default function VisualAnalytics() {
                   cy="50"
                   r="40"
                   fill="none"
-                  stroke="var(--brand-cyan)"
+                  stroke="var(--brand-primary)"
                   strokeWidth="12"
                   strokeDasharray="150.8 100.5"
                   strokeDashoffset="0"
@@ -117,7 +117,7 @@ export default function VisualAnalytics() {
                   cy="50"
                   r="40"
                   fill="none"
-                  stroke="var(--brand-purple)"
+                  stroke="var(--chart-6)"
                   strokeWidth="12"
                   strokeDasharray="62.8 188.5"
                   strokeDashoffset="-150.8"
@@ -128,7 +128,7 @@ export default function VisualAnalytics() {
                   cy="50"
                   r="40"
                   fill="none"
-                  stroke="var(--accent-green)"
+                  stroke="var(--chart-1)"
                   strokeWidth="12"
                   strokeDasharray="37.7 213.6"
                   strokeDashoffset="-213.6"
@@ -168,7 +168,7 @@ export default function VisualAnalytics() {
                 <span className="spending-name">Housing</span>
               </div>
               <div className="spending-bar-container">
-                <div className="spending-bar" style={{ width: '85%', background: 'var(--brand-purple)' }} />
+                <div className="spending-bar" style={{ width: '85%', background: 'var(--chart-6)' }} />
               </div>
               <span className="spending-amount">$2,100</span>
             </div>
@@ -178,7 +178,7 @@ export default function VisualAnalytics() {
                 <span className="spending-name">Food & Dining</span>
               </div>
               <div className="spending-bar-container">
-                <div className="spending-bar" style={{ width: '45%', background: 'var(--brand-cyan)' }} />
+                <div className="spending-bar" style={{ width: '45%', background: 'var(--brand-primary)' }} />
               </div>
               <span className="spending-amount">$680</span>
             </div>
@@ -188,7 +188,7 @@ export default function VisualAnalytics() {
                 <span className="spending-name">Transportation</span>
               </div>
               <div className="spending-bar-container">
-                <div className="spending-bar" style={{ width: '28%', background: 'var(--accent-green)' }} />
+                <div className="spending-bar" style={{ width: '28%', background: 'var(--chart-1)' }} />
               </div>
               <span className="spending-amount">$420</span>
             </div>
@@ -198,7 +198,7 @@ export default function VisualAnalytics() {
                 <span className="spending-name">Utilities</span>
               </div>
               <div className="spending-bar-container">
-                <div className="spending-bar" style={{ width: '18%', background: 'var(--accent-blue)' }} />
+                <div className="spending-bar" style={{ width: '18%', background: 'var(--brand-primary)' }} />
               </div>
               <span className="spending-amount">$280</span>
             </div>
@@ -208,7 +208,7 @@ export default function VisualAnalytics() {
                 <span className="spending-name">Subscriptions</span>
               </div>
               <div className="spending-bar-container">
-                <div className="spending-bar" style={{ width: '15%', background: 'var(--accent-yellow)' }} />
+                <div className="spending-bar" style={{ width: '15%', background: 'var(--accent-warning)' }} />
               </div>
               <span className="spending-amount">$240</span>
             </div>

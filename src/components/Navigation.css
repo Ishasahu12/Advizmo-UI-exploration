@@ -1,7 +1,7 @@
 .navigation {
   width: 200px;
   min-width: 200px;
-  background: var(--bg-secondary);
+  background: var(--bg-card);
   border-right: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
@@ -83,13 +83,13 @@
 }
 
 .nav-item:hover {
-  background: var(--bg-tertiary);
+  background: var(--bg-secondary);
   color: var(--text-primary);
 }
 
 .nav-item.active {
-  background: linear-gradient(135deg, rgba(84, 56, 169, 0.3) 0%, rgba(24, 240, 184, 0.1) 100%);
-  color: var(--text-primary);
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
 }
 
 .nav-item.active::before {
@@ -100,7 +100,7 @@
   transform: translateY(-50%);
   width: 3px;
   height: 24px;
-  background: linear-gradient(180deg, var(--brand-cyan) 0%, var(--brand-purple) 100%);
+  background: linear-gradient(180deg, var(--brand-primary) 0%, var(--chart-6) 100%);
   border-radius: 0 2px 2px 0;
 }
 
@@ -133,8 +133,8 @@
   text-transform: uppercase;
   padding: 2px 4px;
   border-radius: 4px;
-  background: var(--brand-cyan);
-  color: var(--bg-primary);
+  background: var(--brand-primary);
+  color: white;
 }
 
 .nav-footer {

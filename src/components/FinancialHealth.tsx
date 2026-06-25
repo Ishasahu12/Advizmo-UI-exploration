@@ -89,8 +89,8 @@ export default function FinancialHealth() {
                 />
                 <defs>
                   <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="var(--brand-cyan)" />
-                    <stop offset="100%" stopColor="var(--brand-purple)" />
+                    <stop offset="0%" stopColor="var(--brand-primary)" />
+                    <stop offset="100%" stopColor="var(--chart-6)" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -122,7 +122,7 @@ export default function FinancialHealth() {
                 <div className="progress-bar">
                   <div
                     className={`progress-fill ${
-                      metric.score >= 80 ? 'green' : metric.score >= 60 ? 'yellow' : 'red'
+                      metric.score >= 80 ? 'green' : metric.score >= 60 ? 'yellow' : 'yellow'
                     }`}
                     style={{ width: `${metric.score}%` }}
                   />

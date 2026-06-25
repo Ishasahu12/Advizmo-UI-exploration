@@ -17,7 +17,7 @@
 }
 
 .upcoming-card.urgent {
-  border-left: 3px solid var(--accent-yellow);
+  border-left: 3px solid var(--accent-warning);
 }
 
 .upcoming-icon {
@@ -31,23 +31,23 @@
 }
 
 .upcoming-icon.bill {
-  background: var(--accent-yellow-bg);
-  color: var(--accent-yellow);
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
 }
 
 .upcoming-icon.deposit {
-  background: var(--accent-green-bg);
-  color: var(--accent-green);
+  background: var(--emphasis-1);
+  color: var(--chart-1);
 }
 
 .upcoming-icon.tax {
-  background: var(--accent-red-bg);
-  color: var(--accent-red);
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
 }
 
 .upcoming-icon.opportunity {
-  background: rgba(84, 56, 169, 0.2);
-  color: var(--brand-purple);
+  background: #F3E8FF;
+  color: var(--chart-6);
 }
 
 .upcoming-content {
@@ -87,7 +87,7 @@
 }
 
 .upcoming-amount.positive {
-  color: var(--accent-green);
+  color: var(--chart-1);
 }
 
 .upcoming-date {
@@ -96,6 +96,6 @@
 }
 
 .upcoming-date.urgent {
-  color: var(--accent-yellow);
+  color: var(--accent-warning);
   font-weight: 500;
 }

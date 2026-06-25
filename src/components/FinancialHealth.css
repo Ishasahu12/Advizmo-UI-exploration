@@ -57,7 +57,7 @@
 
 .score-status {
   font-size: 13px;
-  color: var(--accent-green);
+  color: var(--chart-1);
 }
 
 .health-summary {
@@ -89,19 +89,19 @@
 }
 
 .health-metric.excellent {
-  border-left: 3px solid var(--accent-green);
+  border-left: 3px solid var(--chart-1);
 }
 
 .health-metric.good {
-  border-left: 3px solid var(--accent-blue);
+  border-left: 3px solid var(--brand-primary);
 }
 
 .health-metric.fair {
-  border-left: 3px solid var(--accent-yellow);
+  border-left: 3px solid var(--accent-warning);
 }
 
 .health-metric.needs-attention {
-  border-left: 3px solid var(--accent-red);
+  border-left: 3px solid var(--accent-urgent);
 }
 
 .metric-header {
@@ -126,23 +126,23 @@
 }
 
 .badge-excellent {
-  background: var(--accent-green-bg);
-  color: var(--accent-green);
+  background: var(--emphasis-1);
+  color: var(--chart-1);
 }
 
 .badge-good {
-  background: var(--accent-blue-bg);
-  color: var(--accent-blue);
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
 }
 
 .badge-fair {
-  background: var(--accent-yellow-bg);
-  color: var(--accent-yellow);
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
 }
 
 .badge-needs-attention {
-  background: var(--accent-red-bg);
-  color: var(--accent-red);
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
 }
 
 .metric-progress {
@@ -187,6 +187,6 @@
 
 .recommendation-text {
   font-size: 12px;
-  color: var(--brand-cyan);
+  color: var(--brand-primary);
   line-height: 1.4;
 }
