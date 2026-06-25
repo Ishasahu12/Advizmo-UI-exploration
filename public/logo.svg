@@ -1,0 +1,5 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="8" fill="#5438A9"/>
+  <path d="M16 6L20 12H26L21 16L23 22L16 18L9 22L11 16L6 12H12L16 6Z" fill="#18F0B8"/>
+  <text x="40" y="24" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#FFFFFF">Advizmo</text>
+</svg>
