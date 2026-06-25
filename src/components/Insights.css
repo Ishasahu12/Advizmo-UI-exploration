@@ -1,55 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-:root {
-  --brand-purple: #5438A9;
-  --brand-cyan: #18F0B8;
-  --bg-primary: #1C1C1E;
-  --bg-secondary: #2C2C2E;
-  --bg-tertiary: #3A3A3C;
-  --bg-card: #2C2C2E;
-  --text-primary: #FFFFFF;
-  --text-secondary: #A1A1A6;
-  --text-tertiary: #636366;
-  --accent-green: #34C759;
-  --accent-red: #FF453A;
-  --accent-blue: #0A84FF;
-  --accent-yellow: #FFD60A;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
-}
-
 .insights {
-  font-family: 'Inter', sans-serif;
-}
-
-.section-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 16px;
+  font-family: var(--font-family);
 }
 
 .insights-grid {
-  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  display: grid;
 }
 
 .insight-card {
   background: var(--bg-card);
-  border: 1px solid var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 20px;
-  display: flex;
   flex-direction: column;
-  transition: all 0.2s ease;
+  padding: 20px;
+  transition: all 0.2s;
+  display: flex;
+  box-shadow: var(--shadow-sm);
 }
 
 .insight-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
 }
 
 .insight-card.positive {
@@ -66,100 +38,100 @@
 
 .insight-card.action {
   border-left: 3px solid var(--accent-blue);
-  background: linear-gradient(135deg, var(--bg-card), rgba(10, 132, 255, 0.05));
+  background: linear-gradient(135deg, var(--bg-card), rgba(0, 122, 255, 0.03));
 }
 
 .insight-header {
-  display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 12px;
+  display: flex;
 }
 
 .insight-icon {
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
   width: 28px;
   height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 14px;
   font-weight: 600;
+  display: flex;
 }
 
 .insight-icon.positive {
-  background: rgba(52, 199, 89, 0.15);
   color: var(--accent-green);
+  background: var(--accent-green-bg);
 }
 
 .insight-icon.negative {
-  background: rgba(255, 69, 58, 0.15);
   color: var(--accent-red);
+  background: var(--accent-red-bg);
 }
 
 .insight-icon.neutral {
-  background: rgba(99, 99, 102, 0.15);
   color: var(--text-tertiary);
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .insight-icon.action {
-  background: rgba(10, 132, 255, 0.15);
   color: var(--accent-blue);
+  background: var(--accent-blue-bg);
 }
 
 .insight-type {
-  font-size: 10px;
-  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   color: var(--text-tertiary);
+  font-size: 10px;
+  font-weight: 600;
 }
 
 .insight-title {
+  color: var(--text-primary);
+  margin: 0 0 8px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
-  margin: 0 0 8px 0;
 }
 
 .insight-description {
-  font-size: 13px;
   color: var(--text-secondary);
-  line-height: 1.5;
-  margin: 0;
   flex: 1;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .insight-footer {
-  display: flex;
+  border-top: 1px solid var(--border-color);
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
   padding-top: 16px;
-  border-top: 1px solid var(--bg-tertiary);
+  display: flex;
 }
 
 .insight-metric {
+  color: var(--brand-cyan);
   font-size: 16px;
   font-weight: 700;
-  color: var(--brand-cyan);
 }
 
 .insight-action {
   background: var(--accent-blue);
-  border: none;
-  color: var(--text-primary);
-  font-size: 12px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  padding: 8px 16px;
+  color: white;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.2s ease;
+  border: none;
+  padding: 8px 16px;
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
 }
 
 .insight-action:hover {
-  background: #2196ff;
+  background: #0056B3;
   transform: scale(1.02);
 }
 

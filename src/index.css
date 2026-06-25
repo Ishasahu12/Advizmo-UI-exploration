@@ -3,31 +3,31 @@
 :root {
   --brand-purple: #5438A9;
   --brand-cyan: #18F0B8;
-  --bg-primary: #1C1C1E;
-  --bg-secondary: #2C2C2E;
-  --bg-tertiary: #3A3A3C;
-  --bg-card: #2C2C2E;
-  --bg-card-hover: #3A3A3C;
+  --bg-primary: #F8F9FA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #E9ECEF;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #F1F3F5;
   
-  --text-primary: #FFFFFF;
-  --text-secondary: #A1A1A6;
-  --text-tertiary: #636366;
+  --text-primary: #1A1A2E;
+  --text-secondary: #6C757D;
+  --text-tertiary: #ADB5BD;
   
   --accent-green: #34C759;
-  --accent-green-bg: rgba(52, 199, 89, 0.15);
-  --accent-red: #FF453A;
-  --accent-red-bg: rgba(255, 69, 58, 0.15);
-  --accent-blue: #0A84FF;
-  --accent-blue-bg: rgba(10, 132, 255, 0.15);
-  --accent-yellow: #FFD60A;
-  --accent-yellow-bg: rgba(255, 214, 10, 0.15);
+  --accent-green-bg: rgba(52, 199, 89, 0.12);
+  --accent-red: #FF3B30;
+  --accent-red-bg: rgba(255, 59, 48, 0.12);
+  --accent-blue: #007AFF;
+  --accent-blue-bg: rgba(0, 122, 255, 0.12);
+  --accent-yellow: #FFCC00;
+  --accent-yellow-bg: rgba(255, 204, 0, 0.12);
   
-  --border-color: #3A3A3C;
-  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-color: #DEE2E6;
+  --border-subtle: rgba(0, 0, 0, 0.06);
   
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.25);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
   
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -53,9 +53,9 @@
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -68,8 +68,8 @@ body {
   font-family: var(--font-family);
   background: var(--bg-primary);
   color: var(--text-primary);
-  line-height: 1.5;
   min-height: 100vh;
+  line-height: 1.5;
 }
 
 #root {
@@ -125,10 +125,12 @@ body {
   border: 1px solid var(--border-subtle);
   padding: var(--space-5);
   transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
 }
 
 .card:hover {
   background: var(--bg-card-hover);
+  box-shadow: var(--shadow-md);
 }
 
 .section-title {
@@ -193,7 +195,7 @@ body {
 
 .badge-yellow {
   background: var(--accent-yellow-bg);
-  color: var(--accent-yellow);
+  color: #996600;
 }
 
 .btn {
@@ -214,7 +216,7 @@ body {
 
 .btn-primary {
   background: linear-gradient(135deg, var(--brand-cyan) 0%, #0ED4A6 100%);
-  color: var(--bg-primary);
+  color: #1A1A2E;
 }
 
 .btn-primary:hover {
@@ -284,7 +286,7 @@ body {
   width: 3px;
   background: var(--brand-cyan);
   border-radius: 1px;
-  opacity: 0.6;
+  opacity: 0.4;
 }
 
 .sparkline-bar:last-child {
