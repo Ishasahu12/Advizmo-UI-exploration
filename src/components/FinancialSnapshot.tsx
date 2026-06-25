@@ -1,89 +1,43 @@
 import React from 'react';
 import './FinancialSnapshot.css';
 
-interface KPIData {
+interface Metric {
   label: string;
   value: string;
-  change: string;
-  changeType: 'positive' | 'negative' | 'neutral';
-  icon: string;
+  change?: string;
+  trend?: 'up' | 'down' | 'neutral';
 }
 
-const FinancialSnapshot: React.FC = () => {
-  const kpis: KPIData[] = [
-    {
-      label: 'Total Net Worth',
-      value: '$847,290',
-      change: '+12.4%',
-      changeType: 'positive',
-      icon: '💎',
-    },
-    {
-      label: 'Cash Available',
-      value: '$24,850',
-      change: '+4.2%',
-      changeType: 'positive',
-      icon: '💵',
-    },
-    {
-      label: 'Invested Assets',
-      value: '$522,440',
-      change: '+8.7%',
-      changeType: 'positive',
-      icon: '📈',
-    },
-    {
-      label: 'Monthly Cash Flow',
-      value: '+$4,820',
-      change: '+15.3%',
-      changeType: 'positive',
-      icon: '💰',
-    },
-    {
-      label: 'Emergency Fund',
-      value: '8.2 months',
-      change: 'Fully funded',
-      changeType: 'neutral',
-      icon: '🛡️',
-    },
-    {
-      label: 'Portfolio Growth',
-      value: '+23.4%',
-      change: 'vs last year',
-      changeType: 'positive',
-      icon: '🚀',
-    },
-  ];
+const metrics: Metric[] = [
+  { label: 'Net Worth', value: '$342,580', change: '+2.4%', trend: 'up' },
+  { label: 'Cash Available', value: '$24,850', change: '-1.2%', trend: 'down' },
+  { label: 'Invested', value: '$289,450', change: '+3.1%', trend: 'up' },
+  { label: 'Monthly Income', value: '$5,840', change: '+8%', trend: 'up' },
+  { label: 'Monthly Expenses', value: '$4,280', change: '+2%', trend: 'down' },
+  { label: 'Emergency Fund', value: '4 of 6 mo', trend: 'neutral' },
+];
 
+const FinancialSnapshot: React.FC = () => {
   return (
-    <div className="financial-snapshot">
-      <h2 className="section-title">Financial Snapshot</h2>
-      <div className="kpi-grid">
-        {kpis.map((kpi) => (
-          <div key={kpi.label} className="kpi-card">
-            <div className="kpi-header">
-              <span className="kpi-icon">{kpi.icon}</span>
-              <span className={`kpi-change ${kpi.changeType}`}>{kpi.change}</span>
-            </div>
-            <div className="kpi-body">
-              <span className="kpi-value">{kpi.value}</span>
-              <span className="kpi-label">{kpi.label}</span>
-            </div>
-            <div className="kpi-sparkline">
-              <svg viewBox="0 0 100 30" preserveAspectRatio="none">
-                <path
-                  d="M0 25 Q 25 20, 50 15 T 100 5"
-                  fill="none"
-                  stroke="var(--brand-cyan)"
-                  strokeWidth="2"
-                  opacity="0.6"
-                />
-              </svg>
-            </div>
+    <section className="financial-snapshot">
+      <h2 className="section-title">Financial Position</h2>
+      <div className="metrics-grid">
+        {metrics.map((metric) => (
+          <div key={metric.label} className="metric-card">
+            <span className="metric-label">{metric.label}</span>
+            <span className="metric-value">{metric.value}</span>
+            {metric.change && (
+              <span className={`metric-change ${metric.trend}`}>
+                {metric.trend === 'up' && '↑'}
+                {metric.trend === 'down' && '↓'}
+                {metric.trend === 'neutral' && '→'}
+                {metric.change}
+              </span>
+            )}
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

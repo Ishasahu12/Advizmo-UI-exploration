@@ -1,138 +1,92 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './Navigation.css';
 
-interface NavItem {
-  label: string;
-  icon: string;
-  badge?: number;
-}
-
-interface NavSection {
-  title: string;
-  items: NavItem[];
-}
-
-const navData: Record<string, NavSection> = {
-  Overview: {
+const navGroups = [
+  {
     title: 'Overview',
     items: [
-      { label: 'Dashboard', icon: '◈' },
-      { label: 'AI Advisor', icon: '◇', badge: 3 },
-      { label: 'Notifications', icon: '○', badge: 5 },
+      { id: 'overview', label: 'Overview', icon: '◈' },
     ],
   },
-  Money: {
+  {
     title: 'Money',
     items: [
-      { label: 'Accounts', icon: '◉' },
-      { label: 'Cash Flow', icon: '◎' },
-      { label: 'Transactions', icon: '●' },
-      { label: 'Budgets', icon: '◐' },
+      { id: 'accounts', label: 'Accounts', icon: '◉' },
+      { id: 'transactions', label: 'Transactions', icon: '●' },
+      { id: 'bills', label: 'Bills', icon: '◎' },
+      { id: 'cashflow', label: 'Cash Flow', icon: '◐' },
     ],
   },
-  Investing: {
+  {
     title: 'Investing',
     items: [
-      { label: 'Portfolio', icon: '◑' },
-      { label: 'Performance', icon: '◒' },
-      { label: 'Asset Allocation', icon: '◓' },
-      { label: 'Risk Analysis', icon: '◔' },
+      { id: 'portfolio', label: 'Portfolio', icon: '◑' },
+      { id: 'investments', label: 'Investments', icon: '◒' },
+      { id: 'performance', label: 'Performance', icon: '◓' },
     ],
   },
-  Planning: {
+  {
+    title: 'Automation',
+    items: [
+      { id: 'rules', label: 'Rules', icon: '⚙' },
+      { id: 'recurring', label: 'Recurring', icon: '↻' },
+      { id: 'idle-cash', label: 'Idle Cash', icon: '◇' },
+      { id: 'auto-investing', label: 'Auto Investing', icon: '◆' },
+    ],
+  },
+  {
     title: 'Planning',
     items: [
-      { label: 'Goals', icon: '◇' },
-      { label: 'Retirement', icon: '◆' },
-      { label: 'Tax Center', icon: '◈' },
-      { label: 'Insurance', icon: '◉' },
+      { id: 'goals', label: 'Goals', icon: '◇' },
+      { id: 'budget', label: 'Budget', icon: '◆' },
+      { id: 'networth', label: 'Net Worth', icon: '◈' },
     ],
   },
-  Utilities: {
-    title: 'Utilities',
+  {
+    title: 'Insights',
     items: [
-      { label: 'Reports', icon: '◎' },
-      { label: 'Settings', icon: '●' },
-      { label: 'Help', icon: '○' },
+      { id: 'ai-assistant', label: 'AI Assistant', icon: '✦' },
+      { id: 'reports', label: 'Reports', icon: '◉' },
+      { id: 'recommendations', label: 'Recommendations', icon: '●' },
     ],
   },
-};
+];
 
 const Navigation: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
-  const [expandedSections, setExpandedSections] = useState<string[]>(Object.keys(navData));
-  const [activeItem, setActiveItem] = useState('Dashboard');
-
-  const toggleSection = (section: string) => {
-    setExpandedSections((prev) =>
-      prev.includes(section)
-        ? prev.filter((s) => s !== section)
-        : [...prev, section]
-    );
-  };
-
-  const toggleCollapse = () => setCollapsed(!collapsed);
+  const [expanded, setExpanded] = useState(false);
 
   return (
-    <nav className={`navigation ${collapsed ? 'collapsed' : ''}`}>
+    <nav 
+      className={`nav-sidebar ${expanded ? 'expanded' : ''}`}
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}
+    >
       <div className="nav-header">
         <div className="nav-logo">
           <span className="logo-icon">▲</span>
-          {!collapsed && <span className="logo-text">Advizmo</span>}
+          <span className="logo-text">Advizmo</span>
         </div>
-        <button className="collapse-btn" onClick={toggleCollapse}>
-          {collapsed ? '→' : '←'}
-        </button>
       </div>
 
       <div className="nav-content">
-        {Object.entries(navData).map(([sectionKey, section]) => (
-          <div key={sectionKey} className="nav-section">
-            <button
-              className="section-header"
-              onClick={() => toggleSection(sectionKey)}
-            >
-              {!collapsed && (
-                <>
-                  <span className="section-title">{section.title}</span>
-                  <span className="section-toggle">
-                    {expandedSections.includes(sectionKey) ? '−' : '+'}
-                  </span>
-                </>
-              )}
-              {collapsed && <span className="section-icon-only">{section.items[0]?.icon}</span>}
-            </button>
-
-            {!collapsed && expandedSections.includes(sectionKey) && (
-              <ul className="nav-items">
-                {section.items.map((item) => (
-                  <li key={item.label}>
-                    <button
-                      className={`nav-item ${activeItem === item.label ? 'active' : ''}`}
-                      onClick={() => setActiveItem(item.label)}
-                    >
-                      <span className="item-icon">{item.icon}</span>
-                      <span className="item-label">{item.label}</span>
-                      {item.badge && <span className="item-badge">{item.badge}</span>}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
+        {navGroups.map((group) => (
+          <div key={group.title} className="nav-group">
+            <div className="nav-group-title">{group.title}</div>
+            {group.items.map((item) => (
+              <button key={item.id} className={`nav-item ${item.id === 'overview' ? 'active' : ''}`}>
+                <span className="nav-item-icon">{item.icon}</span>
+                <span className="nav-item-label">{item.label}</span>
+              </button>
+            ))}
           </div>
         ))}
       </div>
 
       <div className="nav-footer">
-        <div className="user-profile">
-          <div className="user-avatar">JD</div>
-          {!collapsed && (
-            <div className="user-info">
-              <span className="user-name">John Doe</span>
-              <span className="user-status">Premium</span>
-            </div>
-          )}
-        </div>
+        <button className="nav-item">
+          <span className="nav-item-icon">⚙</span>
+          <span className="nav-item-label">Settings</span>
+        </button>
       </div>
     </nav>
   );

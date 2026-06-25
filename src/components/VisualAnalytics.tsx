@@ -3,175 +3,161 @@ import './VisualAnalytics.css';
 
 const VisualAnalytics: React.FC = () => {
   const cashFlowData = [
-    { month: 'Jul', value: 4200 },
-    { month: 'Aug', value: 3800 },
-    { month: 'Sep', value: 5100 },
-    { month: 'Oct', value: 4600 },
-    { month: 'Nov', value: 5200 },
-    { month: 'Dec', value: 4800 },
+    { month: 'Jan', value: 4200 },
+    { month: 'Feb', value: 3800 },
+    { month: 'Mar', value: 5100 },
+    { month: 'Apr', value: 4600 },
+    { month: 'May', value: 5200 },
+    { month: 'Jun', value: 4800 },
   ];
 
-  const incomeVsExpenses = {
-    income: 12500,
-    expenses: 7680,
-  };
+  const maxValue = Math.max(...cashFlowData.map(d => d.value));
 
-  const assetAllocation = [
-    { name: 'Stocks', value: 45, color: 'var(--brand-purple)' },
+  const savingsData = [
+    { category: 'Housing', amount: 2100, percent: 49 },
+    { category: 'Food', amount: 680, percent: 16 },
+    { category: 'Transport', amount: 420, percent: 10 },
+    { category: 'Utilities', amount: 280, percent: 7 },
+    { category: 'Other', amount: 800, percent: 18 },
+  ];
+
+  const allocationData = [
+    { name: 'Stocks', value: 60, color: 'var(--brand-purple)' },
     { name: 'Bonds', value: 25, color: 'var(--brand-cyan)' },
-    { name: 'Real Estate', value: 15, color: 'var(--accent-blue)' },
-    { name: 'Cash', value: 10, color: 'var(--accent-green)' },
-    { name: 'Crypto', value: 5, color: 'var(--accent-yellow)' },
+    { name: 'Cash', value: 15, color: 'var(--accent-green)' },
   ];
-
-  const monthlySpending = [
-    { category: 'Housing', amount: 2400, percent: 31 },
-    { category: 'Food', amount: 800, percent: 10 },
-    { category: 'Transport', amount: 450, percent: 6 },
-    { category: 'Entertainment', amount: 320, percent: 4 },
-    { category: 'Shopping', amount: 680, percent: 9 },
-    { category: 'Other', amount: 2030, percent: 26 },
-  ];
-
-  const maxCashFlow = Math.max(...cashFlowData.map((d) => d.value));
 
   return (
-    <div className="visual-analytics">
-      <h2 className="section-title">Visual Analytics</h2>
+    <section className="visual-analytics">
+      <h2 className="section-title">Analytics</h2>
+      
       <div className="charts-grid">
-        <div className="chart-card cash-flow-chart">
+        <div className="chart-card">
           <div className="chart-header">
-            <h3 className="chart-title">Cash Flow Trend</h3>
+            <h3 className="chart-title">Cash Flow</h3>
             <span className="chart-period">Last 6 months</span>
           </div>
-          <div className="chart-body">
+          <div className="chart-content">
             <div className="bar-chart">
-              {cashFlowData.map((data) => (
-                <div key={data.month} className="bar-group">
-                  <div
-                    className="bar"
-                    style={{ height: `${(data.value / maxCashFlow) * 100}%` }}
-                  >
-                    <span className="bar-value">${(data.value / 1000).toFixed(1)}k</span>
+              {cashFlowData.map((d) => (
+                <div key={d.month} className="bar-group">
+                  <div 
+                    className="bar" 
+                    style={{ height: `${(d.value / maxValue) * 100}%` }}
+                  />
+                  <span className="bar-label">{d.month}</span>
+                </div>
+              ))}
+            </div>
+            <div className="chart-legend">
+              <span className="legend-item">
+                <span className="legend-dot" style={{ background: 'var(--accent-green)' }} />
+                Net savings: $1,560/mo avg
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="chart-card">
+          <div className="chart-header">
+            <h3 className="chart-title">Monthly Spending</h3>
+            <span className="chart-period">June</span>
+          </div>
+          <div className="chart-content">
+            <div className="spending-list">
+              {savingsData.map((item) => (
+                <div key={item.category} className="spending-item">
+                  <span className="spending-category">{item.category}</span>
+                  <div className="spending-bar-container">
+                    <div 
+                      className="spending-bar" 
+                      style={{ width: `${item.percent}%` }}
+                    />
                   </div>
-                  <span className="bar-label">{data.month}</span>
+                  <span className="spending-amount">${item.amount.toLocaleString()}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        <div className="chart-card income-expenses-chart">
+        <div className="chart-card">
+          <div className="chart-header">
+            <h3 className="chart-title">Asset Allocation</h3>
+            <span className="chart-period">Current</span>
+          </div>
+          <div className="chart-content allocation-content">
+            <div className="allocation-donut">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="40" fill="none" stroke="var(--bg-tertiary)" strokeWidth="12" />
+                {allocationData.reduce((acc, item) => {
+                  const offset = acc.offset;
+                  const strokeDash = (item.value / 100) * 251.2;
+                  acc.elements.push(
+                    <circle
+                      key={item.name}
+                      cx="50"
+                      cy="50"
+                      r="40"
+                      fill="none"
+                      stroke={item.color}
+                      strokeWidth="12"
+                      strokeDasharray={`${strokeDash} ${251.2 - strokeDash}`}
+                      strokeDashoffset={-offset}
+                      transform="rotate(-90 50 50)"
+                    />
+                  );
+                  acc.offset += strokeDash;
+                  return acc;
+                }, { elements: [] as React.ReactNode[], offset: 0 }).elements}
+              </svg>
+              <div className="donut-center">
+                <span className="donut-value">$289k</span>
+                <span className="donut-label">Invested</span>
+              </div>
+            </div>
+            <div className="allocation-legend">
+              {allocationData.map((item) => (
+                <div key={item.name} className="legend-item">
+                  <span className="legend-color" style={{ background: item.color }} />
+                  <span className="legend-name">{item.name}</span>
+                  <span className="legend-value">{item.value}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="chart-card">
           <div className="chart-header">
             <h3 className="chart-title">Income vs Expenses</h3>
             <span className="chart-period">This Month</span>
           </div>
-          <div className="chart-body">
-            <div className="comparison-bars">
+          <div className="chart-content">
+            <div className="comparison-chart">
               <div className="comparison-item">
-                <div className="comparison-label">Income</div>
+                <span className="comparison-label">Income</span>
                 <div className="comparison-bar-container">
-                  <div
-                    className="comparison-bar income"
-                    style={{ width: '100%' }}
-                  />
+                  <div className="comparison-bar income" style={{ width: '100%' }} />
                 </div>
-                <span className="comparison-value">$12,500</span>
+                <span className="comparison-value">$5,840</span>
               </div>
               <div className="comparison-item">
-                <div className="comparison-label">Expenses</div>
+                <span className="comparison-label">Expenses</span>
                 <div className="comparison-bar-container">
-                  <div
-                    className="comparison-bar expenses"
-                    style={{ width: `${(incomeVsExpenses.expenses / incomeVsExpenses.income) * 100}%` }}
-                  />
+                  <div className="comparison-bar expenses" style={{ width: '73%' }} />
                 </div>
-                <span className="comparison-value">$7,680</span>
+                <span className="comparison-value">$4,280</span>
               </div>
             </div>
             <div className="savings-indicator">
-              <span className="savings-label">Savings Rate</span>
-              <span className="savings-value">38.6%</span>
+              <span className="savings-label">Monthly Savings</span>
+              <span className="savings-value">$1,560</span>
             </div>
-          </div>
-        </div>
-
-        <div className="chart-card allocation-chart">
-          <div className="chart-header">
-            <h3 className="chart-title">Asset Allocation</h3>
-          </div>
-          <div className="chart-body">
-            <div className="donut-container">
-              <svg viewBox="0 0 100 100" className="donut-chart">
-                {assetAllocation.reduce(
-                  (acc, item) => {
-                    const offset = acc.offset;
-                    const strokeDash = (item.value / 100) * 251.2;
-                    const remaining = 251.2 - strokeDash;
-                    acc.elements.push(
-                      <circle
-                        key={item.name}
-                        cx="50"
-                        cy="50"
-                        r="40"
-                        fill="none"
-                        stroke={item.color}
-                        strokeWidth="12"
-                        strokeDasharray={`${strokeDash} ${remaining}`}
-                        strokeDashoffset={-offset}
-                        transform="rotate(-90 50 50)"
-                      />
-                    );
-                    acc.offset += strokeDash;
-                    return acc;
-                  },
-                  { elements: [] as React.ReactNode[], offset: 0 }
-                ).elements}
-              </svg>
-              <div className="donut-center">
-                <span className="donut-value">$522k</span>
-                <span className="donut-label">Invested</span>
-              </div>
-            </div>
-            <ul className="allocation-legend">
-              {assetAllocation.map((item) => (
-                <li key={item.name} className="legend-item">
-                  <span className="legend-color" style={{ backgroundColor: item.color }} />
-                  <span className="legend-name">{item.name}</span>
-                  <span className="legend-value">{item.value}%</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <div className="chart-card spending-chart">
-          <div className="chart-header">
-            <h3 className="chart-title">Monthly Spending</h3>
-            <span className="chart-period">This Month</span>
-          </div>
-          <div className="chart-body">
-            <ul className="spending-list">
-              {monthlySpending.map((item) => (
-                <li key={item.category} className="spending-item">
-                  <div className="spending-info">
-                    <span className="spending-category">{item.category}</span>
-                    <span className="spending-amount">${item.amount.toLocaleString()}</span>
-                  </div>
-                  <div className="spending-bar-container">
-                    <div
-                      className="spending-bar"
-                      style={{ width: `${item.percent}%` }}
-                    />
-                  </div>
-                  <span className="spending-percent">{item.percent}%</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

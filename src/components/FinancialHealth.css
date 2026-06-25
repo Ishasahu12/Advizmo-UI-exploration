@@ -1,132 +1,173 @@
 .financial-health {
-  font-family: var(--font-family);
+  margin-bottom: var(--space-8);
 }
 
 .health-container {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-xl);
-  gap: 24px;
+  border-radius: var(--radius-lg);
   padding: 24px;
   display: flex;
+  gap: 32px;
   box-shadow: var(--shadow-sm);
 }
 
-.health-score-ring {
+.health-score-section {
   flex-shrink: 0;
-  width: 160px;
-  height: 160px;
-  position: relative;
-}
-
-.ring-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.ring-progress {
-  transition: stroke-dashoffset 1s ease-out;
-}
-
-.ring-content {
+  width: 180px;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  text-align: center;
+  padding-right: 32px;
+  border-right: 1px solid var(--border-color);
+}
+
+.health-score {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-purple), var(--brand-cyan));
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
 }
 
 .score-value {
-  color: var(--text-primary);
-  font-size: 40px;
+  font-size: 36px;
   font-weight: 700;
+  color: white;
   line-height: 1;
 }
 
 .score-label {
-  color: var(--text-secondary);
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 11px;
-  font-weight: 500;
+  margin-top: 4px;
+}
+
+.health-summary {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 .health-metrics {
   flex: 1;
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
-  display: grid;
 }
 
-.metric-card {
+.health-metric {
+  padding: 16px;
   background: var(--bg-tertiary);
   border-radius: var(--radius-md);
-  padding: 16px;
-  transition: all 0.2s;
 }
 
-.metric-card:hover {
-  background: rgba(84, 56, 169, 0.08);
+.health-metric.excellent {
+  border-left: 3px solid var(--accent-green);
+}
+
+.health-metric.good {
+  border-left: 3px solid var(--accent-blue);
+}
+
+.health-metric.fair {
+  border-left: 3px solid var(--accent-yellow);
+}
+
+.health-metric.needs-work {
+  border-left: 3px solid var(--accent-red);
 }
 
 .metric-header {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
-  display: flex;
+  margin-bottom: 8px;
 }
 
-.metric-label {
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 500;
+.metric-header .metric-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.metric-status {
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.status-badge {
   font-size: 10px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
-.metric-bar-container {
+.status-badge.excellent {
+  background: var(--accent-green-bg);
+  color: var(--accent-green);
+}
+
+.status-badge.good {
+  background: var(--accent-blue-bg);
+  color: var(--accent-blue);
+}
+
+.status-badge.fair {
+  background: var(--accent-yellow-bg);
+  color: #996600;
+}
+
+.status-badge.needs-work {
+  background: var(--accent-red-bg);
+  color: var(--accent-red);
+}
+
+.metric-progress {
+  display: flex;
   align-items: center;
   gap: 12px;
-  display: flex;
+  margin-bottom: 8px;
 }
 
-.metric-bar {
-  background: var(--bg-secondary);
-  border-radius: 3px;
+.metric-progress .progress-bar {
   flex: 1;
-  height: 6px;
-  overflow: hidden;
 }
 
-.metric-fill {
-  border-radius: 3px;
-  height: 100%;
-  transition: width 0.6s ease-out;
-}
-
-.metric-value {
-  color: var(--text-primary);
-  text-align: right;
-  min-width: 28px;
+.progress-value {
   font-size: 14px;
   font-weight: 700;
+  color: var(--text-primary);
+  min-width: 28px;
+}
+
+.metric-insight {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
 }
 
 @media (max-width: 900px) {
   .health-container {
     flex-direction: column;
-    align-items: center;
+  }
+  
+  .health-score-section {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-right: 0;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
   }
   
   .health-metrics {
-    width: 100%;
+    grid-template-columns: 1fr;
   }
 }

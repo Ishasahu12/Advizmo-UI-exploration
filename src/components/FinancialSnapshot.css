@@ -1,106 +1,68 @@
 .financial-snapshot {
-  font-family: var(--font-family);
+  margin-bottom: var(--space-8);
 }
 
-.kpi-grid {
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px;
+.metrics-grid {
   display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
 }
 
-.kpi-card {
+.metric-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  flex-direction: column;
-  padding: 20px;
-  transition: all 0.2s;
+  border-radius: var(--radius-md);
+  padding: 16px;
   display: flex;
-  position: relative;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.metric-card:hover {
+  border-color: var(--brand-purple);
   box-shadow: var(--shadow-sm);
 }
 
-.kpi-card:hover {
-  border-color: var(--brand-purple);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.kpi-header {
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  display: flex;
-}
-
-.kpi-icon {
-  font-size: 20px;
-}
-
-.kpi-change {
-  border-radius: 12px;
-  padding: 4px 8px;
+.metric-label {
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
-.kpi-change.positive {
-  color: var(--accent-green);
-  background: var(--accent-green-bg);
-}
-
-.kpi-change.negative {
-  color: var(--accent-red);
-  background: var(--accent-red-bg);
-}
-
-.kpi-change.neutral {
-  color: var(--text-secondary);
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.kpi-body {
-  z-index: 1;
-  flex-direction: column;
-  gap: 4px;
-  display: flex;
-}
-
-.kpi-value {
-  color: var(--text-primary);
-  font-size: 24px;
+.metric-value {
+  font-size: 20px;
   font-weight: 700;
+  color: var(--text-primary);
 }
 
-.kpi-label {
-  color: var(--text-secondary);
+.metric-change {
   font-size: 12px;
   font-weight: 500;
 }
 
-.kpi-sparkline {
-  opacity: 0.5;
-  height: 30px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.metric-change.up {
+  color: var(--accent-green);
 }
 
-.kpi-sparkline svg {
-  width: 100%;
-  height: 100%;
+.metric-change.down {
+  color: var(--accent-red);
 }
 
-@media (max-width: 1400px) {
-  .kpi-grid {
+.metric-change.neutral {
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 1200px) {
+  .metrics-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 900px) {
-  .kpi-grid {
+@media (max-width: 768px) {
+  .metrics-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }

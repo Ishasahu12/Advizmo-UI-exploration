@@ -1,149 +1,104 @@
 import React from 'react';
 import './RecentActivity.css';
 
-type ActivityType = 'transaction' | 'investment' | 'transfer' | 'bill';
-
 interface Activity {
-  id: number;
-  type: ActivityType;
+  id: string;
+  type: 'contribution' | 'withdrawal' | 'transfer' | 'payment' | 'alert';
   title: string;
-  subtitle: string;
-  amount: string;
-  amountType: 'positive' | 'negative' | 'neutral';
+  description: string;
+  amount?: string;
+  date: string;
   time: string;
-  icon: string;
 }
 
+const activities: Activity[] = [
+  {
+    id: '1',
+    type: 'contribution',
+    title: '401k Contribution',
+    description: 'Monthly employer match',
+    amount: '+$1,250',
+    date: 'Jun 24',
+    time: '9:00 AM',
+  },
+  {
+    id: '2',
+    type: 'transfer',
+    title: 'Transfer to Brokerage',
+    description: 'Monthly investment transfer',
+    amount: '-$500',
+    date: 'Jun 23',
+    time: '4:30 PM',
+  },
+  {
+    id: '3',
+    type: 'payment',
+    title: 'Rent Payment',
+    description: 'Monthly rent',
+    amount: '-$1,800',
+    date: 'Jun 22',
+    time: '10:00 AM',
+  },
+  {
+    id: '4',
+    type: 'contribution',
+    title: 'Emergency Fund',
+    description: 'Monthly savings',
+    amount: '+$400',
+    date: 'Jun 21',
+    time: '11:15 AM',
+  },
+  {
+    id: '5',
+    type: 'alert',
+    title: 'High Spending Alert',
+    description: 'Dining out exceeded budget',
+    amount: '+$127',
+    date: 'Jun 20',
+    time: '8:45 PM',
+  },
+];
+
+const activityIcons: Record<Activity['type'], string> = {
+  contribution: '+',
+  withdrawal: '-',
+  transfer: '↔',
+  payment: '✓',
+  alert: '!',
+};
+
 const RecentActivity: React.FC = () => {
-  const activities: Activity[] = [
-    {
-      id: 1,
-      type: 'transaction',
-      title: 'Whole Foods Market',
-      subtitle: 'Grocery • San Francisco, CA',
-      amount: '-$127.43',
-      amountType: 'negative',
-      time: '2 hours ago',
-      icon: '🛒',
-    },
-    {
-      id: 2,
-      type: 'investment',
-      title: 'VTSAX Purchase',
-      subtitle: 'Vanguard Total Stock Market ETF',
-      amount: '+$2,500.00',
-      amountType: 'positive',
-      time: '4 hours ago',
-      icon: '📈',
-    },
-    {
-      id: 3,
-      type: 'transfer',
-      title: 'Transfer to Savings',
-      subtitle: 'Chase Savings • Account ending 4821',
-      amount: '+$1,000.00',
-      amountType: 'positive',
-      time: 'Yesterday',
-      icon: '↗',
-    },
-    {
-      id: 4,
-      type: 'bill',
-      title: 'PG&E Utility Bill',
-      subtitle: 'Monthly • Auto-paid',
-      amount: '-$184.32',
-      amountType: 'negative',
-      time: 'Yesterday',
-      icon: '⚡',
-    },
-    {
-      id: 5,
-      type: 'transaction',
-      title: 'Netflix Subscription',
-      subtitle: 'Monthly • Recurring',
-      amount: '-$15.99',
-      amountType: 'negative',
-      time: '2 days ago',
-      icon: '📺',
-    },
-    {
-      id: 6,
-      type: 'investment',
-      title: 'Dividend Reinvested',
-      subtitle: 'AAPL • Apple Inc.',
-      amount: '+$84.20',
-      amountType: 'positive',
-      time: '3 days ago',
-      icon: '💵',
-    },
-    {
-      id: 7,
-      type: 'transfer',
-      title: 'ACH Transfer Received',
-      subtitle: 'Employer • Direct Deposit',
-      amount: '+$4,250.00',
-      amountType: 'positive',
-      time: '4 days ago',
-      icon: '↓',
-    },
-    {
-      id: 8,
-      type: 'bill',
-      title: 'Mortgage Payment',
-      subtitle: 'Monthly • Auto-paid',
-      amount: '-$2,847.00',
-      amountType: 'negative',
-      time: '5 days ago',
-      icon: '🏠',
-    },
-  ];
-
-  const getTypeColor = (type: ActivityType) => {
-    switch (type) {
-      case 'transaction':
-        return 'var(--accent-blue)';
-      case 'investment':
-        return 'var(--accent-green)';
-      case 'transfer':
-        return 'var(--brand-cyan)';
-      case 'bill':
-        return 'var(--accent-yellow)';
-    }
-  };
-
   return (
-    <div className="recent-activity">
-      <div className="section-header">
-        <h2 className="section-title">Recent Activity</h2>
-        <button className="view-all-btn">View All</button>
-      </div>
-      <div className="activity-timeline">
+    <section className="recent-activity">
+      <h2 className="section-title">Recent Activity</h2>
+      
+      <div className="activity-list">
         {activities.map((activity) => (
-          <div key={activity.id} className="activity-item">
-            <div className="activity-connector">
-              <div
-                className="activity-dot"
-                style={{ backgroundColor: getTypeColor(activity.type) }}
-              />
-              <div className="activity-line" />
+          <div key={activity.id} className={`activity-item ${activity.type}`}>
+            <div className={`activity-icon ${activity.type}`}>
+              {activityIcons[activity.type]}
             </div>
             <div className="activity-content">
-              <div className="activity-icon" style={{ backgroundColor: `${getTypeColor(activity.type)}20` }}>
-                {activity.icon}
-              </div>
-              <div className="activity-details">
+              <div className="activity-header">
                 <span className="activity-title">{activity.title}</span>
-                <span className="activity-subtitle">{activity.subtitle}</span>
+                {activity.amount && (
+                  <span className={`activity-amount ${activity.type === 'contribution' ? 'positive' : 'negative'}`}>
+                    {activity.amount}
+                  </span>
+                )}
               </div>
-              <div className="activity-meta">
-                <span className={`activity-amount ${activity.amountType}`}>{activity.amount}</span>
-                <span className="activity-time">{activity.time}</span>
-              </div>
+              <span className="activity-description">{activity.description}</span>
+            </div>
+            <div className="activity-time">
+              <span className="activity-date">{activity.date}</span>
+              <span className="activity-clock">{activity.time}</span>
             </div>
           </div>
         ))}
       </div>
-    </div>
+      
+      <button className="view-all-btn">View All Activity</button>
+    </section>
   );
 };
 

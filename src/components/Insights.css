@@ -1,27 +1,26 @@
 .insights {
-  font-family: var(--font-family);
+  margin-bottom: var(--space-8);
 }
 
 .insights-grid {
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
   display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
 .insight-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-  flex-direction: column;
-  padding: 20px;
-  transition: all 0.2s;
+  border-radius: var(--radius-md);
+  padding: 16px;
   display: flex;
-  box-shadow: var(--shadow-sm);
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.2s ease;
 }
 
 .insight-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-sm);
 }
 
 .insight-card.positive {
@@ -32,107 +31,98 @@
   border-left: 3px solid var(--accent-red);
 }
 
-.insight-card.neutral {
-  border-left: 3px solid var(--text-tertiary);
+.insight-card.action {
+  border-left: 3px solid var(--brand-purple);
 }
 
-.insight-card.action {
+.insight-card.info {
   border-left: 3px solid var(--accent-blue);
-  background: linear-gradient(135deg, var(--bg-card), rgba(0, 122, 255, 0.03));
 }
 
 .insight-header {
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .insight-icon {
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  width: 28px;
-  height: 28px;
-  font-size: 14px;
-  font-weight: 600;
-  display: flex;
-}
-
-.insight-icon.positive {
-  color: var(--accent-green);
-  background: var(--accent-green-bg);
-}
-
-.insight-icon.negative {
-  color: var(--accent-red);
-  background: var(--accent-red-bg);
-}
-
-.insight-icon.neutral {
-  color: var(--text-tertiary);
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.insight-icon.action {
-  color: var(--accent-blue);
-  background: var(--accent-blue-bg);
-}
-
-.insight-type {
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-tertiary);
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.insight-title {
-  color: var(--text-primary);
-  margin: 0 0 8px;
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.insight-description {
-  color: var(--text-secondary);
-  flex: 1;
-  margin: 0;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.insight-footer {
-  border-top: 1px solid var(--border-color);
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 16px;
-  padding-top: 16px;
-  display: flex;
-}
-
-.insight-metric {
-  color: var(--brand-cyan);
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 700;
 }
 
+.insight-icon.positive {
+  background: var(--accent-green-bg);
+  color: var(--accent-green);
+}
+
+.insight-icon.negative {
+  background: var(--accent-red-bg);
+  color: var(--accent-red);
+}
+
+.insight-icon.action {
+  background: rgba(84, 56, 169, 0.1);
+  color: var(--brand-purple);
+}
+
+.insight-icon.info {
+  background: var(--accent-blue-bg);
+  color: var(--accent-blue);
+}
+
+.insight-metric {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.insight-metric.positive {
+  color: var(--accent-green);
+}
+
+.insight-metric.negative {
+  color: var(--accent-red);
+}
+
+.insight-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.insight-description {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+  flex: 1;
+}
+
 .insight-action {
-  background: var(--accent-blue);
-  color: white;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
+  align-self: flex-start;
+  padding: 6px 12px;
+  background: var(--bg-tertiary);
   border: none;
-  padding: 8px 16px;
+  border-radius: var(--radius-sm);
   font-family: var(--font-family);
   font-size: 12px;
   font-weight: 600;
-  transition: all 0.2s;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: auto;
 }
 
 .insight-action:hover {
-  background: #0056B3;
-  transform: scale(1.02);
+  background: var(--brand-purple);
+  color: white;
 }
 
 @media (max-width: 1200px) {

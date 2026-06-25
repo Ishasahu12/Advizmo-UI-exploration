@@ -1,162 +1,100 @@
 import React from 'react';
 import './UpcomingItems.css';
 
-type ItemType = 'bill' | 'deposit' | 'tax' | 'opportunity';
-
 interface UpcomingItem {
-  id: number;
-  type: ItemType;
+  id: string;
+  type: 'bill' | 'goal' | 'reminder' | 'opportunity';
   title: string;
-  subtitle: string;
-  amount: string;
-  amountType: 'due' | 'income';
-  date: string;
-  icon: string;
-  priority?: 'high' | 'medium' | 'low';
+  description: string;
+  amount?: string;
+  dueDate: string;
+  daysLeft: number;
 }
 
+const upcomingItems: UpcomingItem[] = [
+  {
+    id: '1',
+    type: 'bill',
+    title: 'Quarterly Tax Payment',
+    description: 'Q2 estimated taxes',
+    amount: '$3,200',
+    dueDate: 'Jun 30',
+    daysLeft: 5,
+  },
+  {
+    id: '2',
+    type: 'goal',
+    title: 'Emergency Fund Goal',
+    description: '6 months expenses',
+    amount: '$25,680',
+    dueDate: 'Aug 1',
+    daysLeft: 37,
+  },
+  {
+    id: '3',
+    type: 'bill',
+    title: 'Car Insurance',
+    description: 'Semi-annual premium',
+    amount: '$420',
+    dueDate: 'Jul 15',
+    daysLeft: 20,
+  },
+  {
+    id: '4',
+    type: 'reminder',
+    title: 'Review Subscription',
+    description: 'Annual subscription audit',
+    dueDate: 'Jul 1',
+    daysLeft: 6,
+  },
+  {
+    id: '5',
+    type: 'opportunity',
+    title: 'I Bonds Purchase',
+    description: 'Max out annual limit',
+    amount: '$10,000',
+    dueDate: 'Dec 31',
+    daysLeft: 189,
+  },
+];
+
+const typeIcons: Record<UpcomingItem['type'], string> = {
+  bill: '$',
+  goal: '◎',
+  reminder: '⏰',
+  opportunity: '★',
+};
+
 const UpcomingItems: React.FC = () => {
-  const upcomingItems: UpcomingItem[] = [
-    {
-      id: 1,
-      type: 'bill',
-      title: 'Mortgage Payment',
-      subtitle: 'Monthly auto-payment',
-      amount: '$2,847',
-      amountType: 'due',
-      date: 'Jun 28',
-      icon: '🏠',
-      priority: 'high',
-    },
-    {
-      id: 2,
-      type: 'deposit',
-      title: 'Paycheck Direct Deposit',
-      subtitle: 'Bi-weekly salary',
-      amount: '+$4,250',
-      amountType: 'income',
-      date: 'Jun 30',
-      icon: '💰',
-      priority: 'high',
-    },
-    {
-      id: 3,
-      type: 'tax',
-      title: 'Q2 Estimated Tax Payment',
-      subtitle: 'Federal + State',
-      amount: '-$3,200',
-      amountType: 'due',
-      date: 'Jul 15',
-      icon: '📋',
-      priority: 'medium',
-    },
-    {
-      id: 4,
-      type: 'opportunity',
-      title: 'Roth IRA Contribution',
-      subtitle: '$4,500 remaining',
-      amount: '$4,500',
-      amountType: 'income',
-      date: 'Jul 15',
-      icon: '🚀',
-    },
-    {
-      id: 5,
-      type: 'bill',
-      title: 'Car Insurance',
-      subtitle: '6-month premium',
-      amount: '-$480',
-      amountType: 'due',
-      date: 'Jul 1',
-      icon: '🚗',
-    },
-    {
-      id: 6,
-      type: 'deposit',
-      title: 'Quarterly Bonus',
-      subtitle: 'Performance-based',
-      amount: '+$8,500',
-      amountType: 'income',
-      date: 'Jul 15',
-      icon: '🎉',
-      priority: 'medium',
-    },
-    {
-      id: 7,
-      type: 'tax',
-      title: 'Property Tax Due',
-      subtitle: 'Annual payment',
-      amount: '-$4,200',
-      amountType: 'due',
-      date: 'Aug 1',
-      icon: '🏛️',
-      priority: 'low',
-    },
-    {
-      id: 8,
-      type: 'opportunity',
-      title: 'Apple Dividend',
-      subtitle: 'Quarterly payout',
-      amount: '+$84',
-      amountType: 'income',
-      date: 'Jul 12',
-      icon: '🍎',
-    },
-  ];
-
-  const getTypeColor = (type: ItemType) => {
-    switch (type) {
-      case 'bill':
-        return 'var(--accent-red)';
-      case 'deposit':
-        return 'var(--accent-green)';
-      case 'tax':
-        return 'var(--accent-yellow)';
-      case 'opportunity':
-        return 'var(--brand-cyan)';
-    }
-  };
-
-  const getTypeLabel = (type: ItemType) => {
-    return type.charAt(0).toUpperCase() + type.slice(1);
-  };
-
-  const getPriorityClass = (priority?: string) => {
-    return priority ? `priority-${priority}` : '';
-  };
-
   return (
-    <div className="upcoming-items">
+    <section className="upcoming-items">
       <h2 className="section-title">Upcoming</h2>
-      <div className="items-grid">
+      
+      <div className="items-list">
         {upcomingItems.map((item) => (
-          <div
-            key={item.id}
-            className={`item-card ${getPriorityClass(item.priority)}`}
-          >
-            <div className="item-header">
-              <div
-                className="item-icon"
-                style={{ backgroundColor: `${getTypeColor(item.type)}20` }}
-              >
-                {item.icon}
-              </div>
-              <div className="item-type-badge" style={{ color: getTypeColor(item.type) }}>
-                {getTypeLabel(item.type)}
-              </div>
+          <div key={item.id} className={`item-card ${item.type}`}>
+            <div className={`item-icon ${item.type}`}>
+              {typeIcons[item.type]}
             </div>
-            <div className="item-body">
-              <h3 className="item-title">{item.title}</h3>
-              <p className="item-subtitle">{item.subtitle}</p>
+            <div className="item-content">
+              <div className="item-header">
+                <span className="item-title">{item.title}</span>
+                {item.amount && (
+                  <span className="item-amount">{item.amount}</span>
+                )}
+              </div>
+              <span className="item-description">{item.description}</span>
             </div>
-            <div className="item-footer">
-              <span className={`item-amount ${item.amountType}`}>{item.amount}</span>
-              <span className="item-date">{item.date}</span>
+            <div className={`item-due ${item.daysLeft <= 7 ? 'urgent' : item.daysLeft <= 30 ? 'soon' : 'later'}`}>
+              <span className="due-date">{item.dueDate}</span>
+              <span className="days-left">
+                {item.daysLeft === 0 ? 'Today' : item.daysLeft === 1 ? '1 day' : `${item.daysLeft} days`}
+              </span>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
