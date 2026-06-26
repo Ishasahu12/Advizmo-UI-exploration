@@ -151,7 +151,7 @@ body {
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 .metric-value {

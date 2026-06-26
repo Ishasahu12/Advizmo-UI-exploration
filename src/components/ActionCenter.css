@@ -1,5 +1,6 @@
 .action-center {
-  margin-bottom: var(--space-6);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-16);
 }
 
 /* ── Grid ──────────────────────────────────────────────── */
