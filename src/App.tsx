@@ -1,7 +1,6 @@
 import './index.css';
 import Navigation from './components/Navigation';
 import GlobalHeader from './components/GlobalHeader';
-import HabitTrackerHero from './components/HabitTrackerHero';
 import ActionCenter from './components/ActionCenter';
 import FinancialSnapshot from './components/FinancialSnapshot';
 import FinancialHealth from './components/FinancialHealth';
@@ -18,7 +17,6 @@ function App() {
       <main className="main-content">
         <GlobalHeader />
         <div className="dashboard-container">
-          <HabitTrackerHero />
           <ActionCenter />
           <FinancialSnapshot />
           <FinancialHealth />
