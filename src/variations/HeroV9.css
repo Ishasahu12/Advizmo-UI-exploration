@@ -3,15 +3,15 @@
   margin-bottom: var(--space-16);
 }
 
-/* ── Command Center Container ───────────────────────────── */
+/* ── Stack ──────────────────────────────────────────────── */
 
-.command-center {
+.cc-stack {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-/* ── Card (shared) ──────────────────────────────────────── */
+/* ── Card ───────────────────────────────────────────────── */
 
 .cc-card {
   background: var(--bg-card);
@@ -27,28 +27,21 @@
   box-shadow: var(--shadow-sm);
 }
 
-/* ── Primary Card (70%) ─────────────────────────────────── */
+.cc-card--protect { flex: 7; padding: var(--space-6); gap: var(--space-4); }
+.cc-card--grow    { flex: 3; padding: var(--space-4) var(--space-6); gap: var(--space-3); }
 
-.cc-card--primary {
-  flex: 7;
-  padding: var(--space-6);
-  gap: var(--space-4);
-}
+/* ── Header ─────────────────────────────────────────────── */
 
-/* ── Secondary Card (30%) ───────────────────────────────── */
-
-.cc-card--secondary {
-  flex: 3;
-  padding: var(--space-5) var(--space-6);
-  gap: var(--space-3);
-}
-
-/* ── Card Head ──────────────────────────────────────────── */
-
-.cc-card-head {
+.cc-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.cc-header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
 }
 
 .cc-badge {
@@ -62,144 +55,123 @@
   border-radius: 999px;
 }
 
-.cc-badge--urgent {
-  background: var(--emphasis-3);
-  color: var(--accent-urgent);
+.cc-badge--urgent { background: var(--emphasis-3); color: var(--accent-urgent); }
+.cc-badge--growth { background: var(--emphasis-1); color: var(--chart-1); }
+
+.cc-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
 }
 
-.cc-badge--growth {
-  background: var(--emphasis-1);
-  color: var(--chart-1);
+.cc-header-stats {
+  display: flex;
+  gap: var(--space-5);
 }
 
-.cc-sub {
-  font-size: 12px;
+.cc-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.cc-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cc-stat-label {
+  font-size: 10px;
   color: var(--text-tertiary);
 }
 
-/* ── Card Body ──────────────────────────────────────────── */
+/* ── Body ───────────────────────────────────────────────── */
 
 .cc-card-body {
   display: flex;
   gap: var(--space-8);
+  align-items: flex-start;
 }
 
-.cc-card-body--compact {
-  flex-direction: column;
-  gap: 0;
-}
-
-/* ── Left Side ──────────────────────────────────────────── */
-
-.cc-card-left {
+.cc-body-left {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
-}
-
-.cc-card-title {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.3px;
-}
-
-.cc-amount {
-  font-size: 36px;
-  font-weight: 700;
-  letter-spacing: -0.5px;
-  line-height: 1.1;
-}
-
-.cc-amount--negative {
-  color: var(--accent-urgent);
-}
-
-.cc-desc {
-  font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  max-width: 400px;
-}
-
-/* ── Visual Bar ─────────────────────────────────────────── */
-
-.cc-visual {
-  margin-top: var(--space-3);
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.cc-visual-bar {
-  position: relative;
-  height: 10px;
-  background: var(--bg-tertiary);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.cc-visual-fill {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  border-radius: 5px;
-}
-
-.cc-visual-fill--have {
-  left: 0;
-  background: var(--brand-primary);
-}
-
-.cc-visual-fill--gap {
-  background: var(--accent-negative);
-  opacity: 0.3;
-}
-
-.cc-visual-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 11px;
-  color: var(--text-tertiary);
-}
-
-.cc-visual-labels-gap {
-  color: var(--accent-urgent);
-  font-weight: 500;
-}
-
-/* ── Right Side ─────────────────────────────────────────── */
-
-.cc-card-right {
-  width: 260px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.cc-funding {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
 }
 
-.cc-funding-label {
-  font-size: 11px;
+.cc-body-right {
+  width: 240px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cc-body-label {
+  font-size: 10px;
   font-weight: 600;
   color: var(--text-tertiary);
   text-transform: uppercase;
   letter-spacing: 0.3px;
 }
 
-.cc-funding-options {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+.cc-amount {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
-.cc-funding-option {
+.cc-amount--negative { color: var(--accent-urgent); }
+
+/* ── Bar ────────────────────────────────────────────────── */
+
+.cc-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cc-bar-track {
+  position: relative;
+  height: 8px;
+  background: var(--bg-tertiary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.cc-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--brand-primary);
+  border-radius: 4px;
+}
+
+.cc-bar-gap {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: var(--accent-negative);
+  opacity: 0.3;
+  border-radius: 4px;
+}
+
+.cc-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+/* ── Funding Card ───────────────────────────────────────── */
+
+.cc-funding-card {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -214,7 +186,7 @@
 }
 
 .cc-funding-amount {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   color: var(--text-primary);
 }
@@ -224,12 +196,13 @@
   color: var(--text-tertiary);
 }
 
-/* ── Metrics (bottom card) ──────────────────────────────── */
+/* ── Metrics Row ────────────────────────────────────────── */
 
-.cc-metrics {
-  display: flex;
+.cc-body-metrics {
+  flex-direction: row;
   align-items: center;
   gap: var(--space-6);
+  flex: 1;
 }
 
 .cc-metric {
@@ -244,17 +217,15 @@
 }
 
 .cc-metric-value {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.2px;
 }
 
-.cc-metric-value--positive {
-  color: var(--accent-positive);
-}
+.cc-metric-value--positive { color: var(--accent-positive); }
 
-.cc-metric-divider {
+.cc-metric-sep {
   width: 1px;
   height: 32px;
   background: var(--border-subtle);
@@ -287,32 +258,17 @@
   transition: color var(--transition-fast);
 }
 
-.cc-link:hover {
-  color: var(--brand-primary);
-}
+.cc-link:hover { color: var(--brand-primary); }
 
 /* ── Responsive ─────────────────────────────────────────── */
 
 @media (max-width: 800px) {
-  .cc-card-body {
-    flex-direction: column;
-    gap: var(--space-4);
-  }
-
-  .cc-card-right {
-    width: 100%;
-  }
-
-  .cc-metrics {
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  .cc-metric-divider {
-    display: none;
-  }
-
-  .cc-amount {
-    font-size: 28px;
-  }
+  .cc-card-body { flex-direction: column; gap: var(--space-4); }
+  .cc-body-right { width: 100%; }
+  .cc-body-metrics { flex-wrap: wrap; gap: var(--space-4); }
+  .cc-metric-sep { display: none; }
+  .cc-header-stats { gap: var(--space-3); }
+  .cc-amount { font-size: 32px; }
+  .cc-card--protect { padding: var(--space-5); }
+  .cc-card--grow { padding: var(--space-4) var(--space-5); }
 }
