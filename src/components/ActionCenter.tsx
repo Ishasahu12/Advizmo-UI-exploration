@@ -1,133 +1,165 @@
 import './ActionCenter.css';
 
+interface ActionItem {
+  id: string;
+  icon: React.ReactNode;
+  priority: 'high' | 'medium' | 'low';
+  title: string;
+  description: string;
+  impact: string;
+  impactLabel: string;
+  impactPositive: boolean;
+  cta: string;
+  secondaryLink: string;
+}
+
+const actions: ActionItem[] = [
+  {
+    id: 'invest',
+    icon: <TrendingUpIcon />,
+    priority: 'high',
+    title: 'Invest Idle Cash',
+    description:
+      '$24,850 sitting in checking could grow instead of losing value to inflation.',
+    impact: '+$1,742',
+    impactLabel: 'Potential annual growth',
+    impactPositive: true,
+    cta: 'Move Money',
+    secondaryLink: 'Why this recommendation?',
+  },
+  {
+    id: 'bills',
+    icon: <ShieldIcon />,
+    priority: 'medium',
+    title: 'Cover Upcoming Bills',
+    description:
+      '$2,750 in bills due within 30 days. Ensure sufficient balance to avoid overdraft.',
+    impact: '$2,750',
+    impactLabel: 'Due in next 30 days',
+    impactPositive: false,
+    cta: 'Review Bills',
+    secondaryLink: 'View all upcoming',
+  },
+  {
+    id: 'savings',
+    icon: <PiggyBankIcon />,
+    priority: 'medium',
+    title: 'Optimize Savings',
+    description:
+      '$8,200 in low-yield savings could earn 4.5% APY in a high-yield account.',
+    impact: '+$328',
+    impactLabel: 'Additional yearly earnings',
+    impactPositive: true,
+    cta: 'Explore Options',
+    secondaryLink: 'How was this calculated?',
+  },
+];
+
 export default function ActionCenter() {
   return (
     <section className="action-center">
-      <div className="ac-container">
-        <div className="ac-recommendation">
-          <div className="ac-rec-header">
-            <span className="ac-badge">
-              <span className="ac-badge-dot" />
-              PRIORITY ACTION
-            </span>
-          </div>
-
-          <div className="ac-rec-body">
-            <div className="ac-rec-text">
-              <h2 className="ac-title">Invest Idle Cash</h2>
-              <p className="ac-explanation">
-                $24,850 is currently available to invest safely.
-              </p>
+      <div className="ac-grid">
+        {actions.map((action) => (
+          <article key={action.id} className="ac-card">
+            <div className="ac-card-top">
+              <div className="ac-card-icon">{action.icon}</div>
+              <span className={`ac-priority ac-priority-${action.priority}`}>
+                {action.priority}
+              </span>
             </div>
 
-            <div className="ac-rec-amounts">
-              <div className="ac-amount-primary">
-                <span className="ac-amount-value">$24,850</span>
-                <span className="ac-amount-label">Available to invest</span>
-              </div>
-              <div className="ac-amount-divider" />
-              <div className="ac-amount-growth">
-                <span className="ac-growth-value">+$1,742</span>
-                <span className="ac-growth-label">Estimated annual growth</span>
-              </div>
-            </div>
-          </div>
+            <h3 className="ac-card-title">{action.title}</h3>
+            <p className="ac-card-desc">{action.description}</p>
 
-          <div className="ac-rec-actions">
-            <button className="btn btn-primary ac-btn-primary">
-              <ArrowRightIcon />
-              Move Money
-            </button>
-            <button className="btn btn-ghost ac-btn-secondary">
-              How was this calculated?
-            </button>
-          </div>
+            <div className="ac-card-impact">
+              <span
+                className={`ac-impact-value ${
+                  action.impactPositive ? 'positive' : 'neutral'
+                }`}
+              >
+                {action.impact}
+              </span>
+              <span className="ac-impact-label">{action.impactLabel}</span>
+            </div>
 
-          <div className="ac-rec-trust">
-            <div className="ac-trust-score">
-              <div className="ac-trust-ring">
-                <span className="ac-trust-number">87</span>
-              </div>
-              <span className="ac-trust-label">Confidence</span>
+            <div className="ac-card-footer">
+              <button className="btn btn-primary ac-cta">{action.cta}</button>
+              <button className="ac-secondary-link">
+                {action.secondaryLink}
+              </button>
             </div>
-            <div className="ac-trust-divider" />
-            <div className="ac-trust-info">
-              <span className="ac-trust-destination">Vanguard Total Market ETF (VTI)</span>
-              <span className="ac-trust-meta">Moderate risk · Diversified portfolio</span>
-            </div>
-          </div>
-        </div>
-
-        <div className="ac-evidence">
-          <div className="ac-flow-section">
-            <h3 className="ac-section-label">Where this came from</h3>
-            <div className="ac-flow">
-              <div className="ac-flow-step">
-                <span className="ac-flow-name">Checking</span>
-                <span className="ac-flow-amount">$12,400</span>
-              </div>
-              <FlowArrowIcon />
-              <div className="ac-flow-step">
-                <span className="ac-flow-name">Savings</span>
-                <span className="ac-flow-amount">$8,200</span>
-              </div>
-              <FlowArrowIcon />
-              <div className="ac-flow-step reserved">
-                <span className="ac-flow-name">Emergency</span>
-                <span className="ac-flow-amount">$15,000</span>
-              </div>
-              <FlowArrowIcon />
-              <div className="ac-flow-step bills">
-                <span className="ac-flow-name">Bills</span>
-                <span className="ac-flow-amount">-$2,750</span>
-              </div>
-              <FlowArrowIcon />
-              <div className="ac-flow-step safe">
-                <span className="ac-flow-name">Safe to Invest</span>
-                <span className="ac-flow-amount">$24,850</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="ac-why-section">
-            <h3 className="ac-section-label">Why this matters</h3>
-            <div className="ac-benefits">
-              <div className="ac-benefit positive">
-                <span className="ac-benefit-value">+7.2%</span>
-                <span className="ac-benefit-label">Projected Return</span>
-              </div>
-              <div className="ac-benefit negative">
-                <span className="ac-benefit-value">-$1,489</span>
-                <span className="ac-benefit-label">Cash Drag / year</span>
-              </div>
-              <div className="ac-benefit negative">
-                <span className="ac-benefit-value">-$892</span>
-                <span className="ac-benefit-label">Inflation Loss / year</span>
-              </div>
-              <div className="ac-benefit warning">
-                <span className="ac-benefit-value">High</span>
-                <span className="ac-benefit-label">Opportunity Cost</span>
-              </div>
-            </div>
-          </div>
-        </div>
+          </article>
+        ))}
       </div>
     </section>
   );
 }
 
-function ArrowRightIcon() {
+function TrendingUpIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M3 14L7.5 9.5L10.5 12L17 5"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M13 5H17V9"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-function FlowArrowIcon() {
+function ShieldIcon() {
   return (
-    <svg className="ac-flow-arrow" width="16" height="12" viewBox="0 0 16 12" fill="none">
-      <path d="M0 6H14M14 6L10 2M14 6L10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M10 2L3 5.5V9.5C3 13.6 5.9 17.4 10 18.5C14.1 17.4 17 13.6 17 9.5V5.5L10 2Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M7.5 10L9.5 12L13 8"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function PiggyBankIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path
+        d="M15.5 7C15.5 4.5 13 3 10.5 3H9.5C7 3 4.5 4.5 4.5 7V9C4.5 10.5 3.5 11.5 2 12V13.5H18V12C16.5 11.5 15.5 10.5 15.5 9V7Z"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M18 15H2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <circle
+        cx="10"
+        cy="15"
+        r="2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+      />
     </svg>
   );
 }
