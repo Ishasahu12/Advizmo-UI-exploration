@@ -19,8 +19,9 @@ import HeroV8 from './variations/HeroV8';
 import HeroV9 from './variations/HeroV9';
 import HeroV10 from './variations/HeroV10';
 import HeroV11 from './variations/HeroV11';
+import HeroV12 from './variations/HeroV12';
 
-type VariationId = 'v0' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11';
+type VariationId = 'v0' | 'v4' | 'v5' | 'v6' | 'v7' | 'v8' | 'v9' | 'v10' | 'v11' | 'v12';
 
 const heroMap: Record<VariationId, React.FC> = {
   v0: HeroV0,
@@ -32,6 +33,7 @@ const heroMap: Record<VariationId, React.FC> = {
   v9: HeroV9,
   v10: HeroV10,
   v11: HeroV11,
+  v12: HeroV12,
 };
 
 function getVariationFromHash(): VariationId {
