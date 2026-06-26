@@ -67,9 +67,9 @@ export default function Navigation() {
     >
       <div className="nav-logo-area">
         <div className="nav-logo-icon">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 2L17 6V14L10 18L3 14V6L10 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
-            <path d="M10 7V13M7 10H13" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2L19 6.5V15.5L11 20L3 15.5V6.5L11 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />
+            <path d="M11 8V14M8 11H14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
         </div>
         <span className="nav-logo-text">Advizmo</span>
@@ -108,41 +108,41 @@ export default function Navigation() {
 }
 
 function DashboardIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="10" y="2" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="2" y="10" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="10" y="10" width="6" height="6" rx="1.5" stroke="currentColor" strokeWidth="1.5"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/></svg>;
 }
 
 function AIIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L11 6.5L16 7.5L12.5 11L13.5 16L9 13.5L4.5 16L5.5 11L2 7.5L7 6.5L9 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.5L9.5 8.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>;
 }
 
 function AccountsIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="4" width="14" height="10" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M2 7H16" stroke="currentColor" strokeWidth="1.5"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M3 9H21" stroke="currentColor" strokeWidth="1.5"/></svg>;
 }
 
 function TransactionsIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 6H14M4 9H14M4 12H9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 7H20M4 12H20M4 17H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
 
 function BillsIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2L4 4.5V8.5C4 11.8 6 14.5 9 15.5C12 14.5 14 11.8 14 8.5V4.5L9 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="M7 9L8.5 10.5L11.5 7.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2L5 5.5V11C5 15.5 8 19 12 20.5C16 19 19 15.5 19 11V5.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
 }
 
 function PortfolioIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 15L6.5 10L9.5 12L15 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 5H15V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 20L8.5 13L12.5 16L20 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 7H20V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
 }
 
 function PerformanceIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" strokeWidth="1.5"/><path d="M9 5.5V9.5L11.5 11.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5"/><path d="M12 7V12L15 14.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
 
 function GoalsIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="9" cy="9" r="3.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="9" cy="9" r="1" fill="currentColor"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>;
 }
 
 function TaxIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 4H12L15 7V14C15 15 14 16 13 16H5C4 16 3 15 3 14V5C3 4 4 4 4 4Z" stroke="currentColor" strokeWidth="1.5"/><path d="M12 4V7H15" stroke="currentColor" strokeWidth="1.5"/><path d="M6 11H12M6 14H9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M5 5H17L21 9V19C21 20 20 21 19 21H7C6 21 5 20 5 19V6C5 5 5 5 5 5Z" stroke="currentColor" strokeWidth="1.5"/><path d="M17 5V9H21" stroke="currentColor" strokeWidth="1.5"/><path d="M8 14H16M8 17H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
 
 function SettingsIcon() {
-  return <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="2" stroke="currentColor" strokeWidth="1.5"/><path d="M9 2V3.5M9 14.5V16M16 9H14.5M3.5 9H2M14 4L13 5M5 13L4 14M14 14L13 13M5 5L4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.5"/><path d="M12 3V4.5M12 19.5V21M21 12H19.5M4.5 12H3M18.5 5.5L17.5 6.5M6.5 17.5L5.5 18.5M18.5 18.5L17.5 17.5M6.5 6.5L5.5 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
