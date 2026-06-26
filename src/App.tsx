@@ -10,7 +10,6 @@ import VisualAnalytics from './components/VisualAnalytics';
 import RecentActivity from './components/RecentActivity';
 import AIRecommendations from './components/AIRecommendations';
 
-import VariationNav from './variations/VariationNav';
 import HeroV0 from './variations/HeroV0';
 import HeroV4 from './variations/HeroV4';
 import HeroV5 from './variations/HeroV5';
@@ -52,7 +51,6 @@ function App() {
       <Navigation />
       <main className="main-content">
         <GlobalHeader />
-        <VariationNav />
         <div className="dashboard-container">
           <HeroComponent />
           <UpcomingItems />
