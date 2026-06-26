@@ -108,41 +108,41 @@ export default function Navigation() {
 }
 
 function DashboardIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.5"/></svg>;
 }
 
 function AIIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.5L9.5 8.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.5L9.5 8.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/></svg>;
 }
 
 function AccountsIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M3 9H21" stroke="currentColor" strokeWidth="1.5"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" strokeWidth="1.5"/><path d="M3 9H21" stroke="currentColor" strokeWidth="1.5"/></svg>;
 }
 
 function TransactionsIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 7H20M4 12H20M4 17H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 7H20M4 12H20M4 17H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
 
 function BillsIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2L5 5.5V11C5 15.5 8 19 12 20.5C16 19 19 15.5 19 11V5.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M12 2L5 5.5V11C5 15.5 8 19 12 20.5C16 19 19 15.5 19 11V5.5L12 2Z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round"/><path d="M9 12L11 14L15 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
 }
 
 function PortfolioIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20L8.5 13L12.5 16L20 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 7H20V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M4 20L8.5 13L12.5 16L20 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><path d="M16 7H20V11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>;
 }
 
 function PerformanceIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5"/><path d="M12 7V12L15 14.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5"/><path d="M12 7V12L15 14.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
 
 function GoalsIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" strokeWidth="1.5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>;
 }
 
 function TaxIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 5H17L21 9V19C21 20 20 21 19 21H7C6 21 5 20 5 19V6C5 5 5 5 5 5Z" stroke="currentColor" strokeWidth="1.5"/><path d="M17 5V9H21" stroke="currentColor" strokeWidth="1.5"/><path d="M8 14H16M8 17H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M5 5H17L21 9V19C21 20 20 21 19 21H7C6 21 5 20 5 19V6C5 5 5 5 5 5Z" stroke="currentColor" strokeWidth="1.5"/><path d="M17 5V9H21" stroke="currentColor" strokeWidth="1.5"/><path d="M8 14H16M8 17H12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
 
 function SettingsIcon() {
-  return <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.5"/><path d="M12 3V4.5M12 19.5V21M21 12H19.5M4.5 12H3M18.5 5.5L17.5 6.5M6.5 17.5L5.5 18.5M18.5 18.5L17.5 17.5M6.5 6.5L5.5 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
+  return <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" stroke="currentColor" strokeWidth="1.5"/><path d="M12 3V4.5M12 19.5V21M21 12H19.5M4.5 12H3M18.5 5.5L17.5 6.5M6.5 17.5L5.5 18.5M18.5 18.5L17.5 17.5M6.5 6.5L5.5 5.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>;
 }
