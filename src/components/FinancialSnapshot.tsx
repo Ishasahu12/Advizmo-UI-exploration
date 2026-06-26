@@ -1,116 +1,148 @@
+import { useState } from 'react';
 import './FinancialSnapshot.css';
 
 interface MetricData {
   label: string;
   value: string;
-  change: number;
-  trend: 'up' | 'down' | 'neutral';
+  change: Record<string, number>;
   sparkline: number[];
 }
 
 const metrics: MetricData[] = [
   {
-    label: 'Total Net Worth',
+    label: 'Net Worth',
     value: '$342,580',
-    change: 2.4,
-    trend: 'up',
+    change: { '1d': 0.1, 'today': 0.1, '1m': 2.4, '6m': 8.2, '1y': 14.6 },
     sparkline: [30, 35, 32, 40, 38, 45, 48, 52],
   },
   {
     label: 'Cash Available',
     value: '$24,850',
-    change: -1.2,
-    trend: 'down',
+    change: { '1d': -0.3, 'today': -0.3, '1m': -1.2, '6m': 4.5, '1y': -2.8 },
     sparkline: [45, 42, 40, 38, 35, 32, 30, 28],
   },
   {
     label: 'Invested Assets',
     value: '$289,450',
-    change: 3.1,
-    trend: 'up',
+    change: { '1d': 0.4, 'today': 0.4, '1m': 3.1, '6m': 10.2, '1y': 18.4 },
     sparkline: [20, 25, 28, 32, 38, 42, 48, 55],
   },
   {
-    label: 'Monthly Cash Flow',
+    label: 'Cash Flow',
     value: '+$4,280',
-    change: 18,
-    trend: 'up',
+    change: { '1d': 0, 'today': 0, '1m': 18, '6m': 12, '1y': 8 },
     sparkline: [10, 12, 15, 14, 18, 20, 22, 25],
   },
   {
     label: 'Emergency Fund',
-    value: 'Fully Funded',
-    change: 0,
-    trend: 'neutral',
+    value: '$15,000',
+    change: { '1d': 0, 'today': 0, '1m': 0, '6m': 0, '1y': 0 },
     sparkline: [100, 100, 100, 100, 100, 100, 100, 100],
   },
   {
     label: 'Portfolio Growth',
     value: '+12.4%',
-    change: 2.1,
-    trend: 'up',
+    change: { '1d': 0.2, 'today': 0.2, '1m': 2.1, '6m': 6.8, '1y': 12.4 },
     sparkline: [15, 16, 18, 17, 20, 22, 24, 26],
   },
 ];
 
+const filters = [
+  { id: '1d', label: 'Yesterday' },
+  { id: 'today', label: 'Today' },
+  { id: '1m', label: 'This Month' },
+  { id: '6m', label: '6 Months' },
+  { id: '1y', label: 'Year' },
+];
+
+const filterLabels: Record<string, string> = {
+  '1d': 'vs Yesterday',
+  'today': 'vs Today',
+  '1m': 'vs Last Month',
+  '6m': 'vs 6 Months Ago',
+  '1y': 'vs Last Year',
+};
+
 export default function FinancialSnapshot() {
+  const [activeFilter, setActiveFilter] = useState('1m');
+
   return (
-    <section className="financial-snapshot">
-      <div className="section-header">
-        <h2 className="section-title">Financial Snapshot</h2>
+    <section className="snapshot-section">
+      <div className="snapshot-header">
+        <div>
+          <h2 className="section-title">Financial Snapshot</h2>
+          <p className="section-subtitle">Your financial position at a glance</p>
+        </div>
+        <div className="snapshot-filters">
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              className={`filter-pill ${activeFilter === f.id ? 'active' : ''}`}
+              onClick={() => setActiveFilter(f.id)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
       </div>
+
       <div className="snapshot-grid">
-        {metrics.map((metric) => (
-          <div key={metric.label} className="snapshot-card card">
-            <div className="snapshot-content">
-              <span className="metric-label">{metric.label}</span>
-              <span className="metric-value">{metric.value}</span>
-              <div className="metric-change">
-                {metric.trend === 'up' && <TrendingUpIcon />}
-                {metric.trend === 'down' && <TrendingDownIcon />}
-                {metric.trend === 'neutral' && <MinusIcon />}
-                <span className={`change-value ${metric.trend === 'up' ? 'trend-up' : metric.trend === 'down' ? 'trend-down' : 'trend-neutral'}`}>
-                  {metric.change > 0 ? '+' : ''}{metric.change}%
+        {metrics.map((m) => {
+          const changeVal = m.change[activeFilter];
+          const trend =
+            changeVal > 0 ? 'up' : changeVal < 0 ? 'down' : 'neutral';
+
+          return (
+            <div key={m.label} className="snapshot-card">
+              <span className="snapshot-label">{m.label}</span>
+              <span className="snapshot-value">{m.value}</span>
+              <div className="snapshot-change">
+                {trend === 'up' && <TrendUpIcon />}
+                {trend === 'down' && <TrendDownIcon />}
+                {trend === 'neutral' && <TrendNeutralIcon />}
+                <span className={`change-val trend-${trend}`}>
+                  {changeVal > 0 ? '+' : ''}
+                  {changeVal}%
                 </span>
-                <span className="change-period">vs last month</span>
+                <span className="change-period">{filterLabels[activeFilter]}</span>
+              </div>
+              <div className="snapshot-sparkline">
+                {m.sparkline.map((v, i) => (
+                  <div
+                    key={i}
+                    className={`sparkline-bar ${trend}`}
+                    style={{ height: `${(v / 60) * 100}%` }}
+                  />
+                ))}
               </div>
             </div>
-            <div className="sparkline">
-              {metric.sparkline.map((value, i) => (
-                <div
-                  key={i}
-                  className="sparkline-bar"
-                  style={{ height: `${(value / 60) * 100}%` }}
-                />
-              ))}
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
 }
 
-function TrendingUpIcon() {
+function TrendUpIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M2 10L5.5 6.5L8.5 8.5L12 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <path d="M2 9L5 5.5L7.5 7.5L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
 
-function TrendingDownIcon() {
+function TrendDownIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M2 4L5.5 7.5L8.5 5.5L12 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <path d="M2 3L5 6.5L7.5 4.5L10 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
 
-function MinusIcon() {
+function TrendNeutralIcon() {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-      <path d="M3 7H11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+      <path d="M2 6H10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   );
 }

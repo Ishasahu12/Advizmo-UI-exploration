@@ -1,101 +1,209 @@
-.upcoming-items {
+.upcoming-section {
   margin-bottom: var(--space-8);
 }
 
-.upcoming-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-4);
+.upcoming-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
 }
 
-.upcoming-card {
+.section-subtitle {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+.upcoming-view-all {
+  font-size: 13px;
+  padding: var(--space-2) var(--space-3);
+}
+
+/* ── Summary Bar ───────────────────────────────────────── */
+
+.upcoming-summary {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4);
-  transition: all var(--transition-fast);
+  gap: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-3);
 }
 
-.upcoming-card.urgent {
-  border-left: 3px solid var(--accent-warning);
+.summary-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.upcoming-icon {
-  width: 36px;
-  height: 36px;
+.summary-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.summary-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.summary-urgent {
+  color: var(--accent-warning);
+}
+
+.summary-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-color);
+}
+
+/* ── Bill List ─────────────────────────────────────────── */
+
+.upcoming-list {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.bill-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-5);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background var(--transition-fast);
+}
+
+.bill-row:last-child {
+  border-bottom: none;
+}
+
+.bill-row:hover {
+  background: var(--bg-card-hover);
+}
+
+.bill-icon {
+  width: 32px;
+  height: 32px;
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
   flex-shrink: 0;
 }
 
-.upcoming-icon.bill {
-  background: var(--emphasis-4);
-  color: var(--accent-warning);
+.bill-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
 }
 
-.upcoming-icon.deposit {
-  background: var(--emphasis-1);
-  color: var(--chart-1);
+.bill-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
-.upcoming-icon.tax {
+.bill-category {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.bill-due {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  flex-shrink: 0;
+}
+
+.bill-date {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.bill-days {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.bill-amount {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 80px;
+  text-align: right;
+}
+
+.bill-status {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.status-due-tomorrow {
   background: var(--emphasis-3);
   color: var(--accent-urgent);
 }
 
-.upcoming-icon.opportunity {
-  background: #F3E8FF;
-  color: var(--chart-6);
+.status-due-soon {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
 }
 
-.upcoming-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.upcoming-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.upcoming-subtitle {
-  font-size: 11px;
+.status-upcoming {
+  background: var(--bg-secondary);
   color: var(--text-tertiary);
 }
 
-.upcoming-meta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 2px;
-  flex-shrink: 0;
+.status-auto-pay {
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
 }
 
-.upcoming-amount {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.upcoming-amount.positive {
+.status-paid {
+  background: var(--emphasis-1);
   color: var(--chart-1);
 }
 
-.upcoming-date {
-  font-size: 11px;
-  color: var(--text-tertiary);
+/* ── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .upcoming-summary {
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .summary-value {
+    font-size: 16px;
+  }
+
+  .bill-row {
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .bill-amount {
+    min-width: auto;
+  }
 }
 
-.upcoming-date.urgent {
-  color: var(--accent-warning);
-  font-weight: 500;
+@media (max-width: 480px) {
+  .bill-due,
+  .bill-days {
+    display: none;
+  }
 }
