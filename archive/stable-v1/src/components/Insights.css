@@ -1,0 +1,130 @@
+.insights {
+  margin-bottom: var(--space-16);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.insights-count {
+  font-size: 11px;
+  font-weight: 600;
+  padding: var(--space-1) var(--space-2);
+  background: var(--brand-primary);
+  color: white;
+  border-radius: var(--radius-sm);
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.insight-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border-left: 3px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.insight-card.positive {
+  border-left-color: var(--chart-1);
+}
+
+.insight-card.negative {
+  border-left-color: var(--accent-urgent);
+}
+
+.insight-card.neutral {
+  border-left-color: var(--brand-primary);
+}
+
+.insight-card.action {
+  border-left-color: var(--accent-warning);
+}
+
+.insight-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.insight-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insight-icon.positive {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+.insight-icon.negative {
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
+}
+
+.insight-icon.neutral {
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
+}
+
+.insight-icon.action {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
+}
+
+.insight-metric {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.insight-metric.positive {
+  color: var(--chart-1);
+}
+
+.insight-metric.negative {
+  color: var(--accent-urgent);
+}
+
+.insight-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.insight-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.insight-action {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-primary);
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  margin-top: auto;
+}
+
+.insight-action:hover {
+  color: var(--chart-1);
+}

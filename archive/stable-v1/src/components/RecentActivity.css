@@ -1,0 +1,123 @@
+.recent-activity {
+  margin-bottom: var(--space-16);
+}
+
+.view-all-btn {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.view-all-btn:hover {
+  background: var(--emphasis-2);
+}
+
+.activity-card {
+  padding: var(--space-5);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-item {
+  display: flex;
+  gap: var(--space-4);
+  min-height: 64px;
+}
+
+.timeline-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 32px;
+  flex-shrink: 0;
+}
+
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.timeline-dot.completed {
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+}
+
+.timeline-dot.pending {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
+}
+
+.timeline-line {
+  width: 2px;
+  flex: 1;
+  background: var(--border-subtle);
+  margin: var(--space-2) 0;
+}
+
+.timeline-content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.timeline-item:last-child .timeline-content {
+  border-bottom: none;
+}
+
+.activity-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.activity-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.activity-subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.activity-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.activity-amount {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.activity-amount.positive {
+  color: var(--chart-1);
+}
+
+.activity-time {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}

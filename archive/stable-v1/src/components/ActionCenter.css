@@ -1,0 +1,221 @@
+.action-center {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+/* ── Grid ──────────────────────────────────────────────── */
+
+.ac-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+
+.ac-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
+  cursor: default;
+}
+
+.ac-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-color);
+}
+
+/* ── Card Top: Icon + Badge ────────────────────────────── */
+
+.ac-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ac-card-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
+}
+
+.ac-card:nth-child(1) .ac-card-icon {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+.ac-card:nth-child(2) .ac-card-icon {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
+}
+
+.ac-card:nth-child(3) .ac-card-icon {
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
+}
+
+.ac-priority {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+.ac-priority-high {
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
+}
+
+.ac-priority-medium {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
+}
+
+.ac-priority-low {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+/* ── Title ─────────────────────────────────────────────── */
+
+.ac-card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* ── Description ───────────────────────────────────────── */
+
+.ac-card-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ── Impact ────────────────────────────────────────────── */
+
+.ac-card-impact {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.ac-impact-value {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
+.ac-impact-value.positive {
+  color: var(--accent-positive);
+}
+
+.ac-impact-value.neutral {
+  color: var(--text-primary);
+}
+
+.ac-impact-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* ── Footer: CTA + Link ───────────────────────────────── */
+
+.ac-card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-1);
+}
+
+.ac-cta {
+  font-size: 13px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+}
+
+.ac-secondary-link {
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: var(--space-2) 0;
+  transition: color var(--transition-fast);
+}
+
+.ac-secondary-link:hover {
+  color: var(--brand-primary);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .ac-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+
+  .ac-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-4);
+    padding: var(--space-4);
+  }
+
+  .ac-card-top {
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .ac-card-impact {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .ac-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 600px) {
+  .ac-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ac-card-top {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .ac-impact-value {
+    font-size: 18px;
+  }
+}

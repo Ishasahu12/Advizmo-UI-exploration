@@ -1,0 +1,170 @@
+.ai-recommendations {
+  margin-bottom: var(--space-16);
+}
+
+.ai-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  background: linear-gradient(135deg, rgba(34, 123, 226, 0.1) 0%, rgba(34, 123, 226, 0.05) 100%);
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand-primary);
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.recommendation-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+
+.rec-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rec-category {
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.rec-category.savings {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+.rec-category.safety {
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
+}
+
+.rec-category.spending {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
+}
+
+.rec-category.investing {
+  background: #F3E8FF;
+  color: var(--chart-6);
+}
+
+.rec-category.tax {
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
+}
+
+.rec-confidence {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.confidence-label {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.confidence-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--chart-1);
+}
+
+.rec-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.rec-description {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.rec-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.rec-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.rec-impact, .rec-difficulty {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.rec-impact.impact-high {
+  color: var(--chart-1);
+}
+
+.rec-impact.impact-medium {
+  color: var(--accent-warning);
+}
+
+.rec-impact.impact-low {
+  color: var(--text-tertiary);
+}
+
+.rec-difficulty.diff-easy {
+  color: var(--chart-1);
+}
+
+.rec-difficulty.diff-moderate {
+  color: var(--accent-warning);
+}
+
+.rec-difficulty.diff-effort {
+  color: var(--accent-urgent);
+}
+
+.rec-benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.benefit-label {
+  font-size: 10px;
+  color: var(--text-tertiary);
+}
+
+.benefit-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--chart-1);
+}
+
+.rec-action {
+  width: 100%;
+  padding: var(--space-3);
+  font-size: 13px;
+  margin-top: var(--space-2);
+}
