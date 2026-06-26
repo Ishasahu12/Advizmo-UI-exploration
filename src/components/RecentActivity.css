@@ -21,6 +21,15 @@
 
 .activity-card {
   padding: var(--space-5);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.activity-card:hover {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
 .timeline {
@@ -77,6 +86,15 @@
   align-items: center;
   padding: var(--space-3) 0;
   border-bottom: 1px solid var(--border-subtle);
+  transition: background 150ms ease;
+}
+
+.timeline-content:hover {
+  background: var(--bg-secondary);
+  margin: 0 calc(-1 * var(--space-5));
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+  border-radius: var(--radius-sm);
 }
 
 .timeline-item:last-child .timeline-content {

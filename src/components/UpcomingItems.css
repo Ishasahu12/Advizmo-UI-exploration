@@ -84,7 +84,7 @@
 }
 
 .bill-row:hover {
-  background: var(--bg-card-hover);
+  background: var(--bg-secondary);
 }
 
 .bill-icon {

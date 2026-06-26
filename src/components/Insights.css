@@ -30,7 +30,17 @@
   gap: var(--space-3);
   padding: var(--space-5);
   border-left: 3px solid transparent;
-  transition: all var(--transition-fast);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid transparent;
+  border-radius: var(--radius-lg);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+  cursor: default;
+}
+
+.insight-card:hover {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
 }
 
 .insight-card.positive {

@@ -42,7 +42,7 @@ const heroMap: Record<VariationId, React.FC> = {
 
 function getVariationFromHash(): VariationId {
   const hash = window.location.hash.replace('#', '');
-  return hash in heroMap ? (hash as VariationId) : 'v4';
+  return hash in heroMap ? (hash as VariationId) : 'v14';
 }
 
 function App() {

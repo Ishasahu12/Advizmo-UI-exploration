@@ -42,7 +42,8 @@
 
 .filter-pill.active {
   background: var(--bg-card);
-  color: var(--text-primary);
+  color: var(--brand-primary);
+  font-weight: 600;
   box-shadow: var(--shadow-sm);
 }
 
@@ -133,7 +134,18 @@
 .snapshot-sparkline .sparkline-bar {
   flex: 1;
   border-radius: 2px;
-  transition: opacity var(--transition-fast);
+  transition: opacity 150ms ease, transform 150ms ease;
+  transform-origin: bottom;
+}
+
+.snapshot-card:hover .sparkline-bar {
+  opacity: 0.7;
+  transform: scaleY(1.05);
+}
+
+.snapshot-card:hover .sparkline-bar:last-child {
+  opacity: 1;
+  transform: scaleY(1.1);
 }
 
 .snapshot-sparkline .sparkline-bar.up {
