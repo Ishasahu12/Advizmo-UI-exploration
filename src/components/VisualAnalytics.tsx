@@ -101,10 +101,8 @@ const investInsightsData: Record<Period, string> = {
   '1d': 'Yesterday saw a minor pullback of 0.06%.',
   '1m': 'Portfolio reached a new all-time high this month.',
   '6m': 'Technology exposure increased 4% over the past 6 months.',
-  '1y:': 'Annual return of 18.4% outperformed your benchmark.',
+  '1y': 'Annual return of 18.4% outperformed your benchmark.',
 };
-investInsightsData['1y'] = investInsightsData['1y:'];
-delete investInsightsData['1y:'];
 
 /* ── Component ──────────────────────────────────────────── */
 
