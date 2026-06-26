@@ -124,17 +124,9 @@
   font-weight: 500;
 }
 
-.va-metric-trend.trend-up {
-  color: var(--accent-positive);
-}
-
-.va-metric-trend.trend-down {
-  color: var(--accent-negative);
-}
-
-.va-metric-trend.trend-neutral {
-  color: var(--text-tertiary);
-}
+.va-metric-trend.trend-up { color: var(--accent-positive); }
+.va-metric-trend.trend-down { color: var(--accent-negative); }
+.va-metric-trend.trend-neutral { color: var(--text-tertiary); }
 
 /* ── Insight ───────────────────────────────────────────── */
 
@@ -156,6 +148,25 @@
   color: var(--accent-warning);
 }
 
+/* ── CTA Link ──────────────────────────────────────────── */
+
+.va-cta-link {
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brand-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  transition: color var(--transition-fast);
+}
+
+.va-cta-link:hover {
+  color: var(--chart-5);
+}
+
 /* ── Area Chart ────────────────────────────────────────── */
 
 .va-chart {
@@ -175,6 +186,19 @@
   color: var(--text-tertiary);
 }
 
+.va-chart-labels span {
+  flex: 1;
+  text-align: center;
+}
+
+.va-chart-labels span:first-child {
+  text-align: left;
+}
+
+.va-chart-labels span:last-child {
+  text-align: right;
+}
+
 /* ── Bar Chart ─────────────────────────────────────────── */
 
 .va-bar-chart {
@@ -189,29 +213,24 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
+  flex: 1;
 }
 
 .va-bar-container {
   display: flex;
-  gap: 5px;
+  gap: 4px;
   align-items: flex-end;
   height: 100px;
 }
 
 .va-bar {
-  width: 20px;
+  width: 18px;
   border-radius: 3px 3px 0 0;
   transition: height var(--transition-normal);
 }
 
-.va-bar.income {
-  background: var(--brand-primary);
-}
-
-.va-bar.expense {
-  background: var(--chart-6);
-  opacity: 0.7;
-}
+.va-bar.income { background: var(--brand-primary); }
+.va-bar.expense { background: var(--chart-6); opacity: 0.7; }
 
 .va-bar-label {
   font-size: 11px;
@@ -248,7 +267,7 @@
 
 .va-metrics-row {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 
 .va-mini-stat {
@@ -256,7 +275,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-3);
   background: var(--bg-secondary);
   border-radius: var(--radius-sm);
 }
@@ -267,14 +286,13 @@
 }
 
 .va-mini-value {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-primary);
 }
 
-.va-mini-value.positive {
-  color: var(--accent-positive);
-}
+.va-mini-value.positive { color: var(--accent-positive); }
+.va-mini-value.negative { color: var(--accent-negative); }
 
 /* ── Allocation ────────────────────────────────────────── */
 
@@ -316,33 +334,58 @@
   flex-shrink: 0;
 }
 
-.va-alloc-name {
-  flex: 1;
-  color: var(--text-secondary);
-}
-
-.va-alloc-pct {
-  font-weight: 600;
-  color: var(--text-primary);
-  min-width: 30px;
-  text-align: right;
-}
-
-.va-alloc-value {
-  color: var(--text-secondary);
-  min-width: 70px;
-  text-align: right;
-}
-
-.va-alloc-change {
-  font-size: 11px;
-  font-weight: 500;
-  min-width: 32px;
-  text-align: right;
-}
-
+.va-alloc-name { flex: 1; color: var(--text-secondary); }
+.va-alloc-pct { font-weight: 600; color: var(--text-primary); min-width: 30px; text-align: right; }
+.va-alloc-value { color: var(--text-secondary); min-width: 70px; text-align: right; }
+.va-alloc-change { font-size: 11px; font-weight: 500; min-width: 32px; text-align: right; }
 .va-alloc-change.positive { color: var(--accent-positive); }
 .va-alloc-change.negative { color: var(--accent-negative); }
+
+/* ── Advizmo Accounts Grid ─────────────────────────────── */
+
+.va-accounts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.va-account-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+}
+
+.va-account-icon-wrap {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+.va-account-type {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.va-account-val {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.va-account-count {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
 
 /* ── Account Distribution ──────────────────────────────── */
 
@@ -431,9 +474,7 @@
   color: var(--chart-6);
 }
 
-.va-ai-text {
-  flex: 1;
-}
+.va-ai-text { flex: 1; }
 
 .va-ai-action {
   flex-shrink: 0;
@@ -476,5 +517,13 @@
   .va-allocation {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .va-accounts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .va-metrics-row {
+    flex-direction: column;
   }
 }
