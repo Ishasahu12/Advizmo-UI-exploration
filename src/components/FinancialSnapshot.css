@@ -6,7 +6,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
   gap: var(--space-4);
 }
 
@@ -16,7 +16,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-1);
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
   padding: 3px;
   border-radius: 999px;
   flex-shrink: 0;
@@ -44,7 +44,7 @@
   background: var(--bg-card);
   color: var(--brand-primary);
   font-weight: 600;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-xs);
 }
 
 /* ── Grid ──────────────────────────────────────────────── */
@@ -65,14 +65,30 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
+  box-shadow: var(--shadow-card);
   transition:
     border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+  opacity: 0;
+  animation: snapshotCardIn 400ms var(--ease-out) forwards;
 }
 
 .snapshot-card:hover {
   border-color: var(--border-color);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+@keyframes snapshotCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .snapshot-label {
@@ -82,11 +98,12 @@
 }
 
 .snapshot-value {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.3px;
   line-height: 1.2;
+  font-variant-numeric: tabular-nums;
 }
 
 /* ── Change ────────────────────────────────────────────── */
@@ -134,7 +151,7 @@
 .snapshot-sparkline .sparkline-bar {
   flex: 1;
   border-radius: 2px;
-  transition: opacity 150ms ease, transform 150ms ease;
+  transition: opacity 150ms ease, transform 150ms ease, height 400ms var(--ease-out);
   transform-origin: bottom;
 }
 
@@ -169,14 +186,6 @@
 .snapshot-sparkline .sparkline-bar.neutral {
   background: var(--bg-tertiary);
   opacity: 0.6;
-}
-
-.snapshot-card:hover .sparkline-bar {
-  opacity: 0.6;
-}
-
-.snapshot-card:hover .sparkline-bar:last-child {
-  opacity: 1;
 }
 
 /* ── Responsive ────────────────────────────────────────── */

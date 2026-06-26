@@ -51,7 +51,16 @@
   stroke-linecap: round;
   stroke-dasharray: 163;
   stroke-dashoffset: 29;
-  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: stroke-dashoffset 1s var(--ease-out);
+}
+
+.ring-fill-animated {
+  fill: none;
+  stroke-width: 7;
+  stroke-linecap: round;
+  transition: stroke-dasharray 1.2s var(--ease-out);
+  transform: rotate(-90deg);
+  transform-origin: center;
 }
 
 .ring-value {
@@ -124,14 +133,30 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  box-shadow: var(--shadow-card);
   transition:
     border-color var(--transition-fast),
-    box-shadow var(--transition-fast);
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast);
+  opacity: 0;
+  animation: healthCardIn 400ms var(--ease-out) forwards;
 }
 
 .health-metric-card:hover {
   border-color: var(--border-color);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+@keyframes healthCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .status-border-excellent {

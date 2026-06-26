@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView';
 import './Insights.css';
 
 interface Insight {
@@ -55,15 +56,21 @@ const insights: Insight[] = [
 ];
 
 export default function Insights() {
+  const { ref, inView } = useInView(0.1);
+
   return (
-    <section className="insights">
+    <section className="insights" ref={ref}>
       <div className="section-header">
         <h2 className="section-title">Insights</h2>
         <span className="insights-count">6 new</span>
       </div>
       <div className="insights-grid">
-        {insights.map((insight) => (
-          <div key={insight.id} className={`insight-card card ${insight.type}`}>
+        {insights.map((insight, idx) => (
+          <div
+            key={insight.id}
+            className={`insight-card card ${insight.type}`}
+            style={{ animationDelay: inView ? `${idx * 60}ms` : '0ms' }}
+          >
             <div className="insight-header">
               <div className={`insight-icon ${insight.type}`}>
                 {insight.type === 'positive' && <CheckIcon />}

@@ -41,6 +41,19 @@
   display: flex;
   gap: var(--space-4);
   min-height: 64px;
+  opacity: 0;
+  animation: timelineItemIn 300ms var(--ease-out) forwards;
+}
+
+@keyframes timelineItemIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .timeline-connector {

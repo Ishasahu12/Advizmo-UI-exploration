@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView';
 import './FinancialHealth.css';
 
 interface HealthMetric {
@@ -74,8 +75,10 @@ const statusLabel =
         : 'Needs Attention';
 
 export default function FinancialHealth() {
+  const { ref, inView } = useInView(0.1);
+
   return (
-    <section className="health-section">
+    <section className="health-section" ref={ref}>
       <div className="health-header">
         <h2 className="section-title">Financial Health</h2>
         <p className="section-subtitle">How your finances are performing overall</p>
@@ -94,8 +97,8 @@ export default function FinancialHealth() {
                 stroke="url(#healthGrad)"
                 strokeWidth="7"
                 strokeLinecap="round"
-                strokeDasharray={`${overallScore * 2.64} 264`}
-                transform="rotate(-90 50 50)"
+                strokeDasharray={`${inView ? overallScore * 2.64 : 0} 264`}
+                className="ring-fill-animated"
               />
               <defs>
                 <linearGradient id="healthGrad" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -104,7 +107,7 @@ export default function FinancialHealth() {
                 </linearGradient>
               </defs>
             </svg>
-            <div className="ring-value">{overallScore}</div>
+            <div className="ring-value">{inView ? overallScore : 0}</div>
           </div>
           <div className="health-score-text">
             <span className="health-status">{statusLabel}</span>
@@ -119,8 +122,12 @@ export default function FinancialHealth() {
       </div>
 
       <div className="health-metrics-grid">
-        {healthMetrics.map((m) => (
-          <div key={m.name} className={`health-metric-card status-border-${m.status}`}>
+        {healthMetrics.map((m, idx) => (
+          <div
+            key={m.name}
+            className={`health-metric-card status-border-${m.status}`}
+            style={{ animationDelay: `${idx * 80}ms` }}
+          >
             <div className="metric-top">
               <div className="metric-icon">{m.icon}</div>
               <span className={`metric-badge badge-${m.status}`}>
@@ -135,7 +142,7 @@ export default function FinancialHealth() {
               <div className="metric-bar">
                 <div
                   className={`metric-bar-fill bar-${m.status}`}
-                  style={{ width: `${m.score}%` }}
+                  style={{ width: inView ? `${m.score}%` : '0%' }}
                 />
               </div>
               <span className="metric-score">{m.score}%</span>

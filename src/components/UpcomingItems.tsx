@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView';
 import './UpcomingItems.css';
 
 interface Bill {
@@ -69,14 +70,16 @@ const billsCount = bills.length;
 const nextBill = 'Tomorrow';
 
 export default function UpcomingItems() {
+  const { ref, inView } = useInView(0.1);
+
   return (
-    <section className="upcoming-section">
+    <section className="upcoming-section" ref={ref}>
       <div className="upcoming-header">
         <div>
           <h2 className="section-title">Upcoming Bills</h2>
           <p className="section-subtitle">Bills and payments due soon</p>
         </div>
-        <button className="btn btn-ghost upcoming-view-all">View All Bills</button>
+        <button className="btn btn-ghost btn-sm upcoming-view-all">View All Bills</button>
       </div>
 
       <div className="upcoming-layout">
@@ -98,8 +101,12 @@ export default function UpcomingItems() {
         </div>
 
         <div className="upcoming-list">
-          {bills.map((bill) => (
-            <div key={bill.id} className="bill-row">
+          {bills.map((bill, idx) => (
+            <div
+              key={bill.id}
+              className="bill-row"
+              style={{ animationDelay: inView ? `${idx * 50}ms` : '0ms' }}
+            >
               <div className="bill-icon">{bill.icon}</div>
               <div className="bill-info">
                 <span className="bill-name">{bill.name}</span>

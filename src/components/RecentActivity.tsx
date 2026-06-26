@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView';
 import './RecentActivity.css';
 
 interface Activity {
@@ -77,8 +78,10 @@ const activities: Activity[] = [
 ];
 
 export default function RecentActivity() {
+  const { ref, inView } = useInView(0.1);
+
   return (
-    <section className="recent-activity">
+    <section className="recent-activity" ref={ref}>
       <div className="section-header">
         <h2 className="section-title">Recent Activity</h2>
         <button className="view-all-btn">View All</button>
@@ -86,7 +89,11 @@ export default function RecentActivity() {
       <div className="activity-card card">
         <div className="timeline">
           {activities.map((activity, index) => (
-            <div key={activity.id} className="timeline-item">
+            <div
+              key={activity.id}
+              className="timeline-item"
+              style={{ animationDelay: inView ? `${index * 60}ms` : '0ms' }}
+            >
               <div className="timeline-connector">
                 <div className={`timeline-dot ${activity.status}`}>
                   {activity.type === 'investment' && <InvestmentIcon />}

@@ -1,3 +1,4 @@
+import { useInView } from '../hooks/useInView';
 import './AIRecommendations.css';
 
 interface Recommendation {
@@ -75,8 +76,10 @@ const recommendations: Recommendation[] = [
 ];
 
 export default function AIRecommendations() {
+  const { ref, inView } = useInView(0.1);
+
   return (
-    <section className="ai-recommendations">
+    <section className="ai-recommendations" ref={ref}>
       <div className="section-header">
         <h2 className="section-title">AI Recommendations</h2>
         <div className="ai-badge">
@@ -85,8 +88,12 @@ export default function AIRecommendations() {
         </div>
       </div>
       <div className="recommendations-grid">
-        {recommendations.map((rec) => (
-          <div key={rec.id} className="recommendation-card card">
+        {recommendations.map((rec, idx) => (
+          <div
+            key={rec.id}
+            className="recommendation-card card"
+            style={{ animationDelay: inView ? `${idx * 60}ms` : '0ms' }}
+          >
             <div className="rec-header">
               <span className={`rec-category ${rec.category.toLowerCase()}`}>{rec.category}</span>
               <div className="rec-confidence">

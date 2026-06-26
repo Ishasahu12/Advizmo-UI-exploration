@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import './VisualAnalytics.css';
 
 type Period = '1d' | 'today' | '1m' | '6m' | '1y';
@@ -21,12 +21,12 @@ const periodLabels: Record<Period, string> = {
 
 /* ── Cash Flow Data ─────────────────────────────────────── */
 
-const cashFlowData: Record<Period, { points: number[]; labels: string[]; metric: string; trend: string; insight: string }> = {
-  today: { points: [20,35,28,42,38,55,48,62,58,70,65,80], labels: ['6a','7a','8a','9a','10a','11a','12p','1p','2p','3p','4p','5p'], metric: '+$180', trend: '+8% vs avg', insight: 'Cash flow stayed positive throughout today.' },
-  '1d': { points: [30,45,38,52,48,65,58,72,68,80,75,85], labels: ['6a','7a','8a','9a','10a','11a','12p','1p','2p','3p','4p','5p'], metric: '+$1,240', trend: '+5% vs today', insight: 'Yesterday maintained positive hourly cash flow.' },
-  '1m': { points: [40,42,38,45,50,48,52,55,58,54,60,62,58,65,68,64,70,72,68,75,78,74,80,82,78,85,88,84,90,92], labels: Array.from({length:30},(_,i)=>`${i+1}`), metric: '+$1,360', trend: '+12%', insight: 'Income exceeded spending every day this month.' },
-  '6m': { points: [35,40,38,45,48,42,50,55,52,58,60,56], labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].slice(0,12), metric: '+$8,420', trend: '+18%', insight: 'Positive cash flow maintained for 6 consecutive months.' },
-  '1y': { points: [30,35,32,40,38,45,48,52,55,58,62,65], labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], metric: '+$16,840', trend: '+24%', insight: 'Annual cash flow increased 24% year over year.' },
+const cashFlowData: Record<Period, { points: number[]; labels: string[]; metric: string; trend: string; insight: string; formatValue?: (v: number) => string }> = {
+  today: { points: [20,35,28,42,38,55,48,62,58,70,65,80], labels: ['6a','7a','8a','9a','10a','11a','12p','1p','2p','3p','4p','5p'], metric: '+$180', trend: '+8% vs avg', insight: 'Cash flow stayed positive throughout today.', formatValue: (v) => `$${Math.round(v * 3)}` },
+  '1d': { points: [30,45,38,52,48,65,58,72,68,80,75,85], labels: ['6a','7a','8a','9a','10a','11a','12p','1p','2p','3p','4p','5p'], metric: '+$1,240', trend: '+5% vs today', insight: 'Yesterday maintained positive hourly cash flow.', formatValue: (v) => `$${Math.round(v * 18)}` },
+  '1m': { points: [40,42,38,45,50,48,52,55,58,54,60,62,58,65,68,64,70,72,68,75,78,74,80,82,78,85,88,84,90,92], labels: Array.from({length:30},(_,i)=>`${i+1}`), metric: '+$1,360', trend: '+12%', insight: 'Income exceeded spending every day this month.', formatValue: (v) => `$${Math.round(v * 18)}` },
+  '6m': { points: [35,40,38,45,48,42,50,55,52,58,60,56], labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'].slice(0,12), metric: '+$8,420', trend: '+18%', insight: 'Positive cash flow maintained for 6 consecutive months.', formatValue: (v) => `$${Math.round(v * 120)}` },
+  '1y': { points: [30,35,32,40,38,45,48,52,55,58,62,65], labels: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], metric: '+$16,840', trend: '+24%', insight: 'Annual cash flow increased 24% year over year.', formatValue: (v) => `$${Math.round(v * 260)}` },
 };
 
 /* ── Income vs Expenses Data ────────────────────────────── */
@@ -104,6 +104,150 @@ const investInsightsData: Record<Period, string> = {
   '1y': 'Annual return of 18.4% outperformed your benchmark.',
 };
 
+/* ── Interactive Area Chart ─────────────────────────────── */
+
+function InteractiveAreaChart({
+  points,
+  labels,
+  color,
+  gradientId,
+  height = 80,
+  formatValue,
+  showLabels = true,
+}: {
+  points: number[];
+  labels: string[];
+  color: string;
+  gradientId: string;
+  height?: number;
+  formatValue?: (v: number) => string;
+  showLabels?: boolean;
+}) {
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null);
+
+  const max = Math.max(...points);
+  const w = 400;
+  const h = height;
+  const padding = 4;
+
+  const getX = (i: number) => padding + (i / (points.length - 1)) * (w - 2 * padding);
+  const getY = (v: number) => padding + ((max - v) / max) * (h - 2 * padding);
+
+  const linePath = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${getX(i)} ${getY(p)}`).join(' ');
+  const areaPath = `${linePath} L${getX(points.length - 1)} ${h} L${getX(0)} ${h} Z`;
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent<SVGSVGElement>) => {
+      const svg = svgRef.current;
+      if (!svg) return;
+      const rect = svg.getBoundingClientRect();
+      const mouseX = ((e.clientX - rect.left) / rect.width) * w;
+      const idx = Math.round(
+        ((mouseX - padding) / (w - 2 * padding)) * (points.length - 1),
+      );
+      const clamped = Math.max(0, Math.min(points.length - 1, idx));
+      setHoverIdx(clamped);
+      setTooltipPos({ x: getX(clamped), y: getY(points[clamped]) });
+    },
+    [points],
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    setHoverIdx(null);
+    setTooltipPos(null);
+  }, []);
+
+  const displayLabels = points.length > 6
+    ? labels.filter((_, i) => i % Math.ceil(points.length / 6) === 0 || i === labels.length - 1)
+    : labels;
+
+  return (
+    <div className="va-chart-wrapper">
+      <svg
+        ref={svgRef}
+        viewBox={`0 0 ${w} ${h}`}
+        className="va-area-chart"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        <defs>
+          <linearGradient id={gradientId} x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor={color} stopOpacity="0.15" />
+            <stop offset="100%" stopColor={color} stopOpacity="0" />
+          </linearGradient>
+        </defs>
+
+        {/* Area fill */}
+        <path d={areaPath} fill={`url(#${gradientId})`} className="va-area-fill" />
+
+        {/* Line */}
+        <path d={linePath} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="va-area-line" />
+
+        {/* Hover crosshair */}
+        {hoverIdx !== null && tooltipPos && (
+          <>
+            <line
+              x1={tooltipPos.x}
+              y1={padding}
+              x2={tooltipPos.x}
+              y2={h}
+              stroke="var(--border-color)"
+              strokeWidth="1"
+              strokeDasharray="3,3"
+              className="va-crosshair"
+            />
+            <circle
+              cx={tooltipPos.x}
+              cy={tooltipPos.y}
+              r="4"
+              fill="var(--bg-card)"
+              stroke={color}
+              strokeWidth="2"
+              className="va-hover-dot"
+            />
+          </>
+        )}
+
+        {/* End dot */}
+        {hoverIdx === null && (
+          <circle
+            cx={getX(points.length - 1)}
+            cy={getY(points[points.length - 1])}
+            r="3"
+            fill={color}
+          />
+        )}
+      </svg>
+
+      {/* Tooltip */}
+      {hoverIdx !== null && tooltipPos && (
+        <div
+          className="va-tooltip"
+          style={{
+            left: `${(tooltipPos.x / w) * 100}%`,
+            top: `${(tooltipPos.y / h) * 100 - 12}%`,
+          }}
+        >
+          <span className="va-tooltip-value">
+            {formatValue ? formatValue(points[hoverIdx]) : points[hoverIdx]}
+          </span>
+          <span className="va-tooltip-label">{labels[hoverIdx]}</span>
+        </div>
+      )}
+
+      {showLabels && (
+        <div className="va-chart-labels">
+          {displayLabels.map((l, i) => (
+            <span key={i}>{l}</span>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 /* ── Component ──────────────────────────────────────────── */
 
 export default function VisualAnalytics() {
@@ -144,20 +288,13 @@ export default function VisualAnalytics() {
               <span className="va-metric-trend trend-up"><TrendUpIcon /> {cf.trend}</span>
             </div>
           </div>
-          <div className="va-chart">
-            <svg viewBox="0 0 400 80" className="va-area-chart">
-              <defs>
-                <linearGradient id="cfG" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="var(--accent-positive)" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="var(--accent-positive)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path d={`M0 80 ${cf.points.map((p, i) => `L${(i / (cf.points.length - 1)) * 400} ${80 - (p / 100) * 70}`).join(' ')} L400 80Z`} fill="url(#cfG)" />
-              <path d={`M0 ${80 - (cf.points[0] / 100) * 70} ${cf.points.map((p, i) => `L${(i / (cf.points.length - 1)) * 400} ${80 - (p / 100) * 70}`).join(' ')}`} fill="none" stroke="var(--accent-positive)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="400" cy={80 - (cf.points[cf.points.length - 1] / 100) * 70} r="3" fill="var(--accent-positive)" />
-            </svg>
-            <div className="va-chart-labels">{cf.labels.map((l, i) => <span key={i}>{l}</span>)}</div>
-          </div>
+          <InteractiveAreaChart
+            points={cf.points}
+            labels={cf.labels}
+            color="var(--accent-positive)"
+            gradientId="cfG"
+            formatValue={cf.formatValue}
+          />
           <div className="va-insight"><LightbulbIcon /><span>{cf.insight}</span></div>
         </div>
 
@@ -211,19 +348,13 @@ export default function VisualAnalytics() {
             <div className="va-mini-stat"><span className="va-mini-label">Annual Return</span><span className="va-mini-value positive">{inv.annual}</span></div>
             <div className="va-mini-stat"><span className="va-mini-label">Contributions</span><span className="va-mini-value">{inv.contributions}</span></div>
           </div>
-          <div className="va-chart">
-            <svg viewBox="0 0 400 70" className="va-area-chart">
-              <defs>
-                <linearGradient id="ipG" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="var(--brand-primary)" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="var(--brand-primary)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path d={`M0 70 ${inv.points.map((p, i) => `L${(i / (inv.points.length - 1)) * 400} ${70 - (p / 70) * 60}`).join(' ')} L400 70Z`} fill="url(#ipG)" />
-              <path d={`M0 ${70 - (inv.points[0] / 70) * 60} ${inv.points.map((p, i) => `L${(i / (inv.points.length - 1)) * 400} ${70 - (p / 70) * 60}`).join(' ')}`} fill="none" stroke="var(--brand-primary)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="400" cy={70 - (inv.points[inv.points.length - 1] / 70) * 60} r="3" fill="var(--brand-primary)" />
-            </svg>
-          </div>
+          <InteractiveAreaChart
+            points={inv.points}
+            labels={inv.labels}
+            color="var(--brand-primary)"
+            gradientId="ipG"
+            height={70}
+          />
           <div className="va-insight"><LightbulbIcon /><span>{investInsightsData[activeFilter]}</span></div>
         </div>
 
@@ -244,18 +375,13 @@ export default function VisualAnalytics() {
             <div className="va-mini-stat"><span className="va-mini-label">Lot Optimization</span><span className="va-mini-value positive">{tx.lotOpt}</span></div>
             <div className="va-mini-stat"><span className="va-mini-label">Wash Sale Prevented</span><span className="va-mini-value">{tx.washSale}</span></div>
           </div>
-          <div className="va-chart">
-            <svg viewBox="0 0 400 70" className="va-area-chart">
-              <defs>
-                <linearGradient id="txG" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="var(--chart-1)" stopOpacity="0.2" />
-                  <stop offset="100%" stopColor="var(--chart-1)" stopOpacity="0" />
-                </linearGradient>
-              </defs>
-              <path d={`M0 70 ${tx.points.map((p, i) => `L${(i / (tx.points.length - 1)) * 400} ${70 - (p / Math.max(...tx.points)) * 60}`).join(' ')} L400 70Z`} fill="url(#txG)" />
-              <path d={`M0 ${70 - (tx.points[0] / Math.max(...tx.points)) * 60} ${tx.points.map((p, i) => `L${(i / (tx.points.length - 1)) * 400} ${70 - (p / Math.max(...tx.points)) * 60}`).join(' ')}`} fill="none" stroke="var(--chart-1)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </div>
+          <InteractiveAreaChart
+            points={tx.points}
+            labels={tx.labels}
+            color="var(--chart-1)"
+            gradientId="txG"
+            height={70}
+          />
           <div className="va-insight"><LightbulbIcon /><span>Tax-loss harvesting reduced estimated taxes by {tx.savings} this period. Projected end-of-year savings: {tx.projected}.</span></div>
         </div>
 
