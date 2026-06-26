@@ -56,11 +56,8 @@ const taxData: Record<Period, { savings: string; harvesting: string; lotOpt: str
   '1d': { savings: '$38', harvesting: '$38', lotOpt: '$10', washSale: '$0', projected: '$4,235', points: [0,4,10,16,22,28,34,38], labels: ['9a','10a','11a','12p','1p','2p','3p','4p'], insight: 'Yesterday\'s harvesting saved an estimated $38.' },
   '1m': { savings: '$420', harvesting: '$320', lotOpt: '$85', washSale: '$15', projected: '$4,280', points: [0,35,72,110,148,185,225,268,310,352,395,420], labels: ['1','3','5','7','9','11','13','15','17','19','21','23'], insight: 'Tax-loss harvesting reduced estimated taxes by $420 this month.' },
   '6m': { savings: '$2,480', harvesting: '$1,840', lotOpt: '$480', washSale: '$160', projected: '$4,280', points: [0,280,560,840,1120,1400,1680,1960,2240,2480], labels: ['Jan','Feb','Mar','Apr','May','Jun'], insight: 'Cumulative tax savings reached $2,480 over 6 months.' },
-  '1y:': { savings: '$4,280', harvesting: '$3,200', lotOpt: '$840', washSale: '$240', projected: '$4,280', points: [0,380,720,1100,1480,1850,2200,2580,2940,3320,3680,4020,4280], labels: ['J','F','M','A','M','J','J','A','S','O','N','D'], insight: 'Tax optimization added $4,280 to your after-tax return this year.' },
+  '1y': { savings: '$4,280', harvesting: '$3,200', lotOpt: '$840', washSale: '$240', projected: '$4,280', points: [0,380,720,1100,1480,1850,2200,2580,2940,3320,3680,4020,4280], labels: ['J','F','M','A','M','J','J','A','S','O','N','D'], insight: 'Tax optimization added $4,280 to your after-tax return this year.' },
 };
-// fix key typo
-taxData['1y'] = taxData['1y:'];
-delete taxData['1y:'];
 
 /* ── Allocation Data ────────────────────────────────────── */
 
