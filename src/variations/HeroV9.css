@@ -1,0 +1,318 @@
+.action-center {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+/* ── Command Center Container ───────────────────────────── */
+
+.command-center {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* ── Card (shared) ──────────────────────────────────────── */
+
+.cc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.cc-card:hover {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Primary Card (70%) ─────────────────────────────────── */
+
+.cc-card--primary {
+  flex: 7;
+  padding: var(--space-6);
+  gap: var(--space-4);
+}
+
+/* ── Secondary Card (30%) ───────────────────────────────── */
+
+.cc-card--secondary {
+  flex: 3;
+  padding: var(--space-5) var(--space-6);
+  gap: var(--space-3);
+}
+
+/* ── Card Head ──────────────────────────────────────────── */
+
+.cc-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cc-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.cc-badge--urgent {
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
+}
+
+.cc-badge--growth {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+.cc-sub {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* ── Card Body ──────────────────────────────────────────── */
+
+.cc-card-body {
+  display: flex;
+  gap: var(--space-8);
+}
+
+.cc-card-body--compact {
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Left Side ──────────────────────────────────────────── */
+
+.cc-card-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cc-card-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.cc-amount {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.cc-amount--negative {
+  color: var(--accent-urgent);
+}
+
+.cc-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  max-width: 400px;
+}
+
+/* ── Visual Bar ─────────────────────────────────────────── */
+
+.cc-visual {
+  margin-top: var(--space-3);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cc-visual-bar {
+  position: relative;
+  height: 10px;
+  background: var(--bg-tertiary);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.cc-visual-fill {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.cc-visual-fill--have {
+  left: 0;
+  background: var(--brand-primary);
+}
+
+.cc-visual-fill--gap {
+  background: var(--accent-negative);
+  opacity: 0.3;
+}
+
+.cc-visual-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.cc-visual-labels-gap {
+  color: var(--accent-urgent);
+  font-weight: 500;
+}
+
+/* ── Right Side ─────────────────────────────────────────── */
+
+.cc-card-right {
+  width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cc-funding {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.cc-funding-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.cc-funding-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.cc-funding-option {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--space-3);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.cc-funding-source {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.cc-funding-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cc-funding-note {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+/* ── Metrics (bottom card) ──────────────────────────────── */
+
+.cc-metrics {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.cc-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cc-metric-label {
+  font-size: 11px;
+  color: var(--text-tertiary);
+}
+
+.cc-metric-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.cc-metric-value--positive {
+  color: var(--accent-positive);
+}
+
+.cc-metric-divider {
+  width: 1px;
+  height: 32px;
+  background: var(--border-subtle);
+  flex-shrink: 0;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.cc-card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+}
+
+.cc-cta {
+  font-size: 13px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-sm);
+}
+
+.cc-link {
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: var(--space-2) 0;
+  transition: color var(--transition-fast);
+}
+
+.cc-link:hover {
+  color: var(--brand-primary);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 800px) {
+  .cc-card-body {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .cc-card-right {
+    width: 100%;
+  }
+
+  .cc-metrics {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .cc-metric-divider {
+    display: none;
+  }
+
+  .cc-amount {
+    font-size: 28px;
+  }
+}
