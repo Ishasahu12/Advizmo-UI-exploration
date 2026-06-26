@@ -1,0 +1,325 @@
+.action-center {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+/* ── Timeline Container ─────────────────────────────────── */
+
+.timeline {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* ── Step ───────────────────────────────────────────────── */
+
+.timeline-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.timeline-step-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.timeline-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--brand-primary);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.timeline-step-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  height: 100%;
+}
+
+.timeline-card:hover {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Rows ───────────────────────────────────────────────── */
+
+.timeline-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.timeline-row:last-child {
+  border-bottom: none;
+}
+
+.timeline-row-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.timeline-row-icon--balance {
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
+}
+
+.timeline-row-icon--bills {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
+}
+
+.timeline-row-icon--idle {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+.timeline-row-icon--emergency {
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+}
+
+.timeline-row-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timeline-row-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.timeline-row-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.timeline-row-value--positive {
+  color: var(--accent-positive);
+}
+
+.timeline-row-value--warning {
+  color: var(--accent-urgent);
+}
+
+/* ── Connector ──────────────────────────────────────────── */
+
+.timeline-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-3);
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.timeline-line {
+  width: 1px;
+  flex: 1;
+  min-height: 20px;
+  background: var(--border-color);
+}
+
+.timeline-arrow {
+  color: var(--brand-primary);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+/* ── Analysis Card ──────────────────────────────────────── */
+
+.timeline-card--analysis {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--bg-secondary);
+}
+
+.timeline-analysis-text {
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.timeline-analysis-text strong {
+  color: var(--brand-primary);
+  font-weight: 700;
+}
+
+.timeline-analysis-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+.timeline-tag {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+}
+
+/* ── Action Cards ───────────────────────────────────────── */
+
+.timeline-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  height: 100%;
+}
+
+.timeline-action-card {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-3);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.timeline-action-card:hover {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.timeline-action-left {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline-action-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.timeline-action-badge--urgent {
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
+}
+
+.timeline-action-badge--invest {
+  background: var(--emphasis-2);
+  color: var(--brand-primary);
+}
+
+.timeline-action-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.timeline-action-amount {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.timeline-action-amount--positive {
+  color: var(--accent-positive);
+}
+
+.timeline-action-btn {
+  font-size: 12px;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .timeline {
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .timeline-connector {
+    flex-direction: row;
+    padding: var(--space-2) 0;
+  }
+
+  .timeline-line {
+    width: auto;
+    height: 1px;
+    min-height: auto;
+    min-width: 20px;
+  }
+
+  .timeline-arrow {
+    transform: rotate(90deg);
+  }
+
+  .timeline-actions {
+    flex-direction: row;
+  }
+
+  .timeline-action-card {
+    flex: 1;
+  }
+}

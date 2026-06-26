@@ -7,6 +7,7 @@ const variations = [
   { id: 'v5', label: 'V5 · Minimal', hash: '#v5' },
   { id: 'v6', label: 'V6 · Progress', hash: '#v6' },
   { id: 'v7', label: 'V7 · Widget', hash: '#v7' },
+  { id: 'v8', label: 'V8 · Timeline', hash: '#v8' },
 ];
 
 export default function VariationNav() {
