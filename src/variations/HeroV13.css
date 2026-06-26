@@ -6,15 +6,17 @@
 /* ── Queue ──────────────────────────────────────────────── */
 
 .queue {
-  display: flex;
-  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
 }
 
 .queue-header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
 }
 
 .queue-title {
@@ -32,45 +34,67 @@
 
 .approval {
   display: flex;
-  gap: var(--space-3);
-  padding: var(--space-5) 0;
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.approval:first-of-type {
-  padding-top: 0;
+  gap: 0;
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  transition: background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .approval:last-child {
-  border-bottom: none;
+  margin-bottom: 0;
 }
 
-/* ── Status Dot ─────────────────────────────────────────── */
+.approval--invest {
+  background: linear-gradient(135deg, rgba(29, 158, 117, 0.04) 0%, rgba(34, 123, 226, 0.02) 100%);
+  border: 1px solid rgba(29, 158, 117, 0.12);
+}
 
-.approval-status {
-  padding-top: 6px;
-  flex-shrink: 0;
+.approval--invest:hover {
+  box-shadow: 0 2px 12px rgba(29, 158, 117, 0.08);
+}
+
+.approval--urgent {
+  background: linear-gradient(135deg, rgba(216, 80, 64, 0.04) 0%, rgba(212, 133, 26, 0.02) 100%);
+  border: 1px solid rgba(216, 80, 64, 0.12);
+}
+
+.approval--urgent:hover {
+  box-shadow: 0 2px 12px rgba(216, 80, 64, 0.08);
+}
+
+/* ── Sidebar ────────────────────────────────────────────── */
+
+.approval-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: var(--space-4);
+  gap: 0;
 }
 
 .approval-status-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .approval-status-dot--pending {
-  background: var(--brand-primary);
-  animation: approval-pulse 2s ease-in-out infinite;
+  background: var(--chart-1);
+  box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.15);
 }
 
 .approval-status-dot--urgent {
   background: var(--accent-urgent);
-  animation: approval-pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 0 3px rgba(183, 37, 19, 0.15);
 }
 
-@keyframes approval-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+.approval-sidebar-line {
+  width: 1px;
+  flex: 1;
+  background: var(--border-subtle);
+  margin-top: 6px;
 }
 
 /* ── Body ───────────────────────────────────────────────── */
@@ -82,6 +106,8 @@
   gap: var(--space-4);
 }
 
+/* ── Top Row ────────────────────────────────────────────── */
+
 .approval-top {
   display: flex;
   align-items: flex-start;
@@ -92,15 +118,29 @@
 .approval-info {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
 
-.approval-label {
+.approval-badge {
+  display: inline-flex;
+  align-items: center;
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--text-tertiary);
+  padding: 2px 8px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.approval-badge--pending {
+  background: rgba(29, 158, 117, 0.12);
+  color: var(--chart-1);
+}
+
+.approval-badge--urgent {
+  background: rgba(183, 37, 19, 0.1);
+  color: var(--accent-urgent);
 }
 
 .approval-title {
@@ -120,7 +160,7 @@
 
 .approval-btn {
   font-size: 12px;
-  padding: 6px 16px;
+  padding: 7px 16px;
   border-radius: var(--radius-sm);
 }
 
@@ -128,7 +168,7 @@
   font-family: var(--font-family);
   font-size: 12px;
   font-weight: 500;
-  padding: 6px 14px;
+  padding: 7px 14px;
   border-radius: var(--radius-sm);
   background: transparent;
   color: var(--text-tertiary);
@@ -140,38 +180,86 @@
 .approval-btn-reject:hover {
   border-color: var(--accent-negative);
   color: var(--accent-negative);
+  background: rgba(216, 80, 64, 0.04);
 }
 
 /* ── Meta Fields ────────────────────────────────────────── */
 
 .approval-meta {
   display: flex;
-  gap: var(--space-6);
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: var(--radius-sm);
 }
 
 .approval-field {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex: 1;
 }
 
 .approval-field-label {
   font-size: 10px;
   font-weight: 500;
   color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .approval-field-value {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   font-size: 13px;
   font-weight: 600;
   color: var(--text-primary);
 }
 
-.approval-field-value--positive {
-  color: var(--accent-positive);
+.approval-icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
 }
 
-.approval-field-value--negative {
+.approval-icon--invest {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+.approval-icon--emergency {
+  background: var(--emphasis-4);
+  color: var(--accent-warning);
+}
+
+.approval-arrow {
+  color: var(--text-tertiary);
+  opacity: 0.4;
+  flex-shrink: 0;
+  margin-top: 14px;
+}
+
+.approval-amount {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.1px;
+  flex-shrink: 0;
+  margin-top: 14px;
+}
+
+.approval-amount--positive {
+  color: var(--chart-1);
+}
+
+.approval-amount--negative {
   color: var(--accent-urgent);
 }
 
@@ -180,18 +268,16 @@
 .approval-details {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
-.approval-reason,
-.approval-impact {
+.approval-detail {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.approval-reason-label,
-.approval-impact-label {
+.approval-detail-label {
   font-size: 10px;
   font-weight: 600;
   text-transform: uppercase;
@@ -199,19 +285,39 @@
   color: var(--text-tertiary);
 }
 
-.approval-reason-text,
-.approval-impact-text {
+.approval-detail-text {
   font-size: 13px;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
+}
+
+.approval-detail-text strong {
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 /* ── Responsive ─────────────────────────────────────────── */
 
 @media (max-width: 800px) {
+  .approval {
+    padding: var(--space-4);
+  }
+
+  .approval-sidebar {
+    display: none;
+  }
+
   .approval-meta {
-    flex-direction: column;
-    gap: var(--space-3);
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .approval-arrow {
+    display: none;
+  }
+
+  .approval-amount {
+    margin-top: 0;
   }
 
   .approval-top {
