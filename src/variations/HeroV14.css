@@ -1,0 +1,217 @@
+.action-center {
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-16);
+}
+
+/* ── Decision Center ────────────────────────────────────── */
+
+.dc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+/* ── Card ───────────────────────────────────────────────── */
+
+.dc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.dc-card:hover {
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.dc-card--protect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-urgent), var(--accent-warning));
+}
+
+.dc-card--grow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--chart-1), var(--chart-2));
+}
+
+/* ── Card Head ──────────────────────────────────────────── */
+
+.dc-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dc-priority {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-tertiary);
+}
+
+.dc-purpose {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.dc-purpose--protect {
+  background: var(--emphasis-3);
+  color: var(--accent-urgent);
+}
+
+.dc-purpose--grow {
+  background: var(--emphasis-1);
+  color: var(--chart-1);
+}
+
+/* ── Card Body ──────────────────────────────────────────── */
+
+.dc-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.dc-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.dc-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.dc-amount {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.dc-amount--negative {
+  color: var(--accent-urgent);
+}
+
+.dc-amount--positive {
+  color: var(--accent-positive);
+}
+
+.dc-explain {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.dc-explain strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* ── Details Grid ───────────────────────────────────────── */
+
+.dc-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.dc-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dc-detail-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.dc-detail-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dc-detail-value--positive {
+  color: var(--accent-positive);
+}
+
+.dc-detail-value--negative {
+  color: var(--accent-urgent);
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.dc-card-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.dc-cta {
+  font-size: 13px;
+  padding: var(--space-2) var(--space-5);
+  border-radius: var(--radius-sm);
+}
+
+.dc-link {
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: var(--space-2) 0;
+  transition: color var(--transition-fast);
+}
+
+.dc-link:hover {
+  color: var(--brand-primary);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 800px) {
+  .dc {
+    grid-template-columns: 1fr;
+  }
+
+  .dc-details {
+    grid-template-columns: 1fr;
+  }
+}
